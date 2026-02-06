@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Reel and Roll Photography - Book your photography session today">
+    <title>Contact Us | Reel and Roll Photography</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/logo.jpeg" alt="Reel & Roll Photography"></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="fade-in-up">Get In <span class="text-gradient">Touch</span></h1>
+            <div class="page-breadcrumb fade-in-up">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Contact</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle">Let's Work Together</p>
+                <h2>Ready to Capture Your <span class="text-gradient">Moments</span>?</h2>
+                <p>Fill out the form below and we'll get back to you within 24 hours</p>
+            </div>
+
+            <div class="contact-container">
+                <form class="contact-form reveal" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Service Interested In *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="wedding">Wedding Photography</option>
+                                <option value="portrait">Portrait Session</option>
+                                <option value="event">Event Coverage</option>
+                                <option value="landscape">Landscape Photography</option>
+                                <option value="commercial">Commercial Photography</option>
+                                <option value="editing">Photo Editing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" required
+                            placeholder="Tell us about your project, event, or photography needs..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span>Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="section section-darker">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Other Ways to <span class="text-gradient">Reach Us</span></h2>
+            </div>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="service-card reveal">
+                    <div class="service-icon">📧</div>
+                    <h3>Email Us</h3>
+                    <p style="color: var(--color-yellow); font-size: 1.1rem; margin-top: 1rem;">
+                        <a href="mailto:info@reelandroll.com">info@reelandroll.com</a>
+                    </p>
+                    <p>We respond to all emails within 24 hours</p>
+                </div>
+
+                <div class="service-card reveal">
+                    <div class="service-icon">📱</div>
+                    <h3>Call Us</h3>
+                    <p style="color: var(--color-yellow); font-size: 1.1rem; margin-top: 1rem;">
+                        <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                    </p>
+                    <p>Monday - Friday: 9AM - 6PM<br>Saturday: 10AM - 4PM</p>
+                </div>
+
+                <div class="service-card reveal">
+                    <div class="service-icon">📍</div>
+                    <h3>Visit Us</h3>
+                    <p style="color: var(--color-yellow); font-size: 1.1rem; margin-top: 1rem;">
+                        123 Photography Lane<br>
+                        Creative City, CC 12345
+                    </p>
+                    <p>By appointment only</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Section -->
+    <section class="section section-dark">
+        <div class="container reveal" style="text-align: center;">
+            <h2>Follow Us on <span class="text-gradient">Social Media</span></h2>
+            <p style="max-width: 600px; margin: 1rem auto 2rem;">Stay updated with our latest work, photography tips,
+                and special offers</p>
+            <div class="social-links" style="justify-content: center; margin-top: 2rem;">
+                <a href="#" class="social-link" aria-label="Instagram"
+                    style="width: 60px; height: 60px; font-size: 1.8rem;">📷</a>
+                <a href="#" class="social-link" aria-label="Facebook"
+                    style="width: 60px; height: 60px; font-size: 1.8rem;">👥</a>
+                <a href="#" class="social-link" aria-label="Twitter"
+                    style="width: 60px; height: 60px; font-size: 1.8rem;">🐦</a>
+                <a href="#" class="social-link" aria-label="Pinterest"
+                    style="width: 60px; height: 60px; font-size: 1.8rem;">📌</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section-darker">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle">Common Questions</p>
+                <h2>Frequently Asked <span class="text-gradient">Questions</span></h2>
+            </div>
+
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="service-card reveal" style="margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--color-yellow);">How far in advance should I book?</h3>
+                    <p>We recommend booking 3-6 months in advance for weddings and 2-4 weeks for portrait sessions.
+                        However, we'll do our best to accommodate last-minute requests.</p>
+                </div>
+
+                <div class="service-card reveal" style="margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--color-yellow);">What is your pricing?</h3>
+                    <p>Our pricing varies based on the type of photography, duration, and specific requirements. Contact
+                        us for a custom quote tailored to your needs.</p>
+                </div>
+
+                <div class="service-card reveal" style="margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--color-yellow);">How long until I receive my photos?</h3>
+                    <p>Edited photos are typically delivered within 2-3 weeks for most sessions. Wedding photography may
+                        take 4-6 weeks due to the volume of images.</p>
+                </div>
+
+                <div class="service-card reveal">
+                    <h3 style="color: var(--color-yellow);">Do you travel for sessions?</h3>
+                    <p>Yes! We travel locally and internationally for photography sessions. Travel fees may apply
+                        depending on the location.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Reel & Roll</h3>
+                    <p>Capturing life's most precious moments with passion, creativity, and professional excellence
+                        since 2010.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="Facebook">👥</a>
+                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                        <a href="#" class="social-link" aria-label="Pinterest">📌</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>📧 <a href="mailto:info@reelandroll.com">info@reelandroll.com</a></li>
+                        <li>📱 <a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                        <li>📍 123 Photography Lane<br>Creative City, CC 12345</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 <a href="index.html">Reel and Roll Photography</a>. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>  
+
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/971545465757" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><img src="assets/whatsappIcon-mhd.svg" alt="WhatsApp"></a>
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/971545465757" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><img src="assets/whatsappIcon-mhd.svg" alt="WhatsApp"></a>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>

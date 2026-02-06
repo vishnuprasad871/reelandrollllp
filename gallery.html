@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Browse our complete photography gallery - Wedding, Portrait, Event, Landscape, and more">
+    <title>Gallery | Reel and Roll Photography</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/logo.jpeg" alt="Reel & Roll Photography"></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="fade-in-up">Photo <span class="text-gradient">Gallery</span></h1>
+            <div class="page-breadcrumb fade-in-up">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Gallery</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-container">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle">Our Collection</p>
+                <h2>Complete <span class="text-gradient">Photography Gallery</span></h2>
+                <p>Browse through our extensive collection of photography work</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="gallery-filters reveal">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="wedding">Wedding</button>
+                <button class="filter-btn" data-filter="portrait">Portrait</button>
+                <button class="filter-btn" data-filter="event">Event</button>
+                <button class="filter-btn" data-filter="landscape">Landscape</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid">
+                <!-- Wedding Photos -->
+                <div class="gallery-item reveal" data-category="wedding">
+                    <img src="assets/portfolio_wedding_1770402245749.png" alt="Wedding Photography">
+                </div>
+
+                <!-- Portrait Photos -->
+                <div class="gallery-item reveal" data-category="portrait">
+                    <img src="assets/portfolio_portrait_1770402268053.png" alt="Portrait Photography">
+                </div>
+
+                <div class="gallery-item reveal" data-category="portrait">
+                    <img src="assets/about_photographer_1770402230073.png" alt="Professional Portrait">
+                </div>
+
+                <!-- Landscape Photos -->
+                <div class="gallery-item reveal" data-category="landscape">
+                    <img src="assets/portfolio_landscape_1770402286898.png" alt="Landscape Photography">
+                </div>
+
+                <div class="gallery-item reveal" data-category="landscape">
+                    <img src="assets/hero_background_1770402213477.png" alt="Sunset Photography">
+                </div>
+
+                <!-- Event Photos -->
+                <div class="gallery-item reveal" data-category="event">
+                    <img src="assets/portfolio_event_1770402304065.png" alt="Event Photography">
+                </div>
+
+                <!-- Additional photos (demonstrative - using existing images) -->
+                <div class="gallery-item reveal" data-category="wedding">
+                    <img src="assets/portfolio_wedding_1770402245749.png" alt="Wedding Ceremony">
+                </div>
+
+                <div class="gallery-item reveal" data-category="portrait">
+                    <img src="assets/portfolio_portrait_1770402268053.png" alt="Corporate Portrait">
+                </div>
+
+                <div class="gallery-item reveal" data-category="landscape">
+                    <img src="assets/portfolio_landscape_1770402286898.png" alt="Nature Photography">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="contact-cta section">
+        <div class="container reveal">
+            <h2>Love What You <span class="text-gradient">See</span>?</h2>
+            <p>Let's create stunning photography for your special moments</p>
+            <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Contact Us</span></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Reel & Roll</h3>
+                    <p>Capturing life's most precious moments with passion, creativity, and professional excellence
+                        since 2010.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="Facebook">👥</a>
+                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                        <a href="#" class="social-link" aria-label="Pinterest">📌</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>📧 <a href="mailto:info@reelandroll.com">info@reelandroll.com</a></li>
+                        <li>📱 <a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                        <li>📍 123 Photography Lane<br>Creative City, CC 12345</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 <a href="index.html">Reel and Roll Photography</a>. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>  
+
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/971545465757" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><img src="assets/whatsappIcon-mhd.svg" alt="WhatsApp"></a>
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/971545465757" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><img src="assets/whatsappIcon-mhd.svg" alt="WhatsApp"></a>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
