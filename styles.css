@@ -31,7 +31,7 @@
   --gradient-gold-shine: linear-gradient(135deg, #D4B875 0%, #C9A961 50%, #B89850 100%);
 
   /* Typography */
-  --font-heading: 'Playfair Display', serif;
+  --font-heading: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
 
   /* Spacing */
