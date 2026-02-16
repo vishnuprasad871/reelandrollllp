@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Management | Reel and Roll Photography</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="../assets/logo.jpeg" alt="Reel & Roll">
+                    <h1>Gallery Manager</h1>
+                </div>
+                <div class="header-actions">
+                    <span id="userInfo" class="user-info"></span>
+                    <button id="logoutBtn" class="btn-logout">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="container">
+                <!-- Upload Section -->
+                <section class="upload-section">
+                    <h2>Upload New Image</h2>
+                    <form id="uploadForm" class="upload-form">
+                        <div class="upload-area" id="uploadArea">
+                            <input type="file" id="imageFile" name="image" accept="image/*" required>
+                            <div class="upload-placeholder">
+                                <div class="upload-icon">📷</div>
+                                <p>Click or drag image here to upload</p>
+                                <small>Supported: JPG, PNG, GIF, WEBP (Max 5MB)</small>
+                            </div>
+                            <div id="imagePreview" class="image-preview" style="display: none;">
+                                <img src="" alt="Preview">
+                                <button type="button" class="btn-remove-preview">✕</button>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select id="category" name="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="wedding">Wedding</option>
+                                    <option value="portrait">Portrait</option>
+                                    <option value="event">Event</option>
+                                    <option value="landscape">Landscape</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="altText">Alt Text</label>
+                                <input type="text" id="altText" name="alt_text"
+                                    placeholder="Description for accessibility">
+                            </div>
+                        </div>
+
+                        <div id="uploadMessage" class="message" style="display: none;"></div>
+
+                        <button type="submit" class="btn-primary">
+                            <span>Upload Image</span>
+                            <div class="loader" style="display: none;"></div>
+                        </button>
+                    </form>
+                </section>
+
+                <!-- Gallery Management Section -->
+                <section class="gallery-management">
+                    <div class="section-header">
+                        <h2>Manage Gallery</h2>
+                        <div class="filter-tabs">
+                            <button class="filter-tab active" data-filter="all">All</button>
+                            <button class="filter-tab" data-filter="wedding">Wedding</button>
+                            <button class="filter-tab" data-filter="portrait">Portrait</button>
+                            <button class="filter-tab" data-filter="event">Event</button>
+                            <button class="filter-tab" data-filter="landscape">Landscape</button>
+                        </div>
+                    </div>
+
+                    <div id="galleryGrid" class="gallery-admin-grid">
+                        <div class="loader-container">
+                            <div class="loader"></div>
+                            <p>Loading gallery...</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Image</h3>
+                <button class="modal-close" onclick="closeEditModal()">✕</button>
+            </div>
+            <form id="editForm">
+                <input type="hidden" id="editImageId">
+                <div class="form-group">
+                    <label for="editCategory">Category</label>
+                    <select id="editCategory" name="category" required>
+                        <option value="wedding">Wedding</option>
+                        <option value="portrait">Portrait</option>
+                        <option value="event">Event</option>
+                        <option value="landscape">Landscape</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editAltText">Alt Text</label>
+                    <input type="text" id="editAltText" name="alt_text">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
