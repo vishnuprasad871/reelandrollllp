@@ -6,8 +6,8 @@ USE reelandroll;
 -- Username: admin
 -- Password: admin123 (hashed with PASSWORD_DEFAULT)
 INSERT INTO users (username, password, email) VALUES 
-('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@reelandroll.com')
-ON DUPLICATE KEY UPDATE username = username;
+('admin', '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77bGOi', 'admin@reelandroll.com')
+ON DUPLICATE KEY UPDATE password = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77bGOi';
 
 -- Migrate existing gallery images from the current HTML
 INSERT INTO gallery (filename, original_name, category, alt_text, display_order, is_active) VALUES
