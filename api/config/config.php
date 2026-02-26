@@ -22,7 +22,7 @@ if ($app_env === 'production') {
 // Application constants
 define('APP_ENV', $app_env);
 define('APP_DEBUG', getenv('APP_DEBUG') === 'true');
-define('APP_URL', getenv('APP_URL') ?: 'http://localhost:8080');
+define('APP_URL', getenv('APP_URL') ?: 'https://reelandroll.com');
 
 // Upload configuration
 define('UPLOAD_DIR', __DIR__ . '/../../uploads/gallery/');
