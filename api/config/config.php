@@ -29,9 +29,9 @@ define('UPLOAD_DIR', __DIR__ . '/../../uploads/gallery/');
 define('UPLOAD_MAX_SIZE', getenv('UPLOAD_MAX_SIZE') ?: 5242880); // 5MB default
 define('ALLOWED_EXTENSIONS', explode(',', getenv('ALLOWED_EXTENSIONS') ?: 'jpg,jpeg,png,gif,webp'));
 
-// Create upload directory if it doesn't exist
+// Create upload directory if it doesn't exist (may fail on some hosts — non-fatal)
 if (!file_exists(UPLOAD_DIR)) {
-    mkdir(UPLOAD_DIR, 0755, true);
+    @mkdir(UPLOAD_DIR, 0755, true);
 }
 
 // CORS headers for API
@@ -52,8 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
  * @param mixed $data
  * @param int $status_code
  */
-function sendJsonResponse($data, $status_code = 200) {
+function sendJsonResponse($data, $status_code = 200)
+{
+    if (ob_get_level() > 0)
+        ob_clean(); // discard any buffered warnings/notices
     http_response_code($status_code);
+    header('Content-Type: application/json; charset=UTF-8');
     echo json_encode($data);
     exit();
 }
@@ -63,6 +67,7 @@ function sendJsonResponse($data, $status_code = 200) {
  * @param string $message
  * @param int $status_code
  */
-function sendErrorResponse($message, $status_code = 400) {
+function sendErrorResponse($message, $status_code = 400)
+{
     sendJsonResponse(['error' => $message], $status_code);
 }

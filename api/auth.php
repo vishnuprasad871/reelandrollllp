@@ -4,8 +4,28 @@
  * Handles user login, logout, and session verification
  */
 
-require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../models/User.php';
+// Buffer all output so stray warnings/notices don't corrupt JSON
+ob_start();
+
+// Global exception handler — catches fatal errors even before config is loaded
+set_exception_handler(function (Throwable $e) {
+    ob_clean();
+    http_response_code(500);
+    header('Content-Type: application/json; charset=UTF-8');
+    echo json_encode(['error' => 'Server error: ' . $e->getMessage()]);
+    exit();
+});
+
+try {
+    require_once __DIR__ . '/config/config.php';
+    require_once __DIR__ . '/models/User.php';
+} catch (Throwable $e) {
+    ob_clean();
+    http_response_code(500);
+    header('Content-Type: application/json; charset=UTF-8');
+    echo json_encode(['error' => 'Startup error: ' . $e->getMessage()]);
+    exit();
+}
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -20,8 +40,9 @@ try {
         default:
             sendErrorResponse('Method not allowed', 405);
     }
-} catch (Exception $e) {
+} catch (Throwable $e) {
     error_log('auth.php error: ' . $e->getMessage());
+    ob_clean();
     sendErrorResponse('Server error: ' . $e->getMessage(), 500);
 }
 
@@ -30,10 +51,18 @@ try {
  */
 function login()
 {
-    $data = json_decode(file_get_contents("php://input"));
+    $rawInput = file_get_contents("php://input");
+    $data = json_decode($rawInput);
+
+    // Guard: null body or invalid JSON
+    if ($data === null || !isset($data->username, $data->password)) {
+        sendErrorResponse('Username and password are required', 400);
+        return;
+    }
 
     if (empty($data->username) || empty($data->password)) {
         sendErrorResponse('Username and password are required', 400);
+        return;
     }
 
     $user = new User();

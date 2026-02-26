@@ -4,9 +4,9 @@
  * Handles gallery CRUD operations
  */
 
-require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../models/Gallery.php';
-require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/config/config.php';
+require_once __DIR__ . '/models/Gallery.php';
+require_once __DIR__ . '/models/User.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
