@@ -9,15 +9,20 @@ require_once __DIR__ . '/../models/User.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-switch ($method) {
-    case 'POST':
-        login();
-        break;
-    case 'GET':
-        verify();
-        break;
-    default:
-        sendErrorResponse('Method not allowed', 405);
+try {
+    switch ($method) {
+        case 'POST':
+            login();
+            break;
+        case 'GET':
+            verify();
+            break;
+        default:
+            sendErrorResponse('Method not allowed', 405);
+    }
+} catch (Exception $e) {
+    error_log('auth.php error: ' . $e->getMessage());
+    sendErrorResponse('Server error: ' . $e->getMessage(), 500);
 }
 
 /**
