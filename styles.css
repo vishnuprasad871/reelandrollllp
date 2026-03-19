@@ -111,6 +111,13 @@ h3 {
   font-size: clamp(1.5rem, 3vw, 2.5rem);
 }
 
+.text-reveal {
+  background: linear-gradient(to right, var(--color-white) 0%, var(--color-gray-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 h4 {
   font-size: clamp(1.25rem, 2.5vw, 2rem);
 }
@@ -275,6 +282,82 @@ a:hover {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Glassmorphism Utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* ===================================
+   TRUST BAR
+   =================================== */
+.trust-bar {
+  padding: 3rem 0;
+  background: var(--color-darker);
+  border-bottom: 1px solid var(--color-charcoal);
+  overflow: hidden;
+}
+
+.logo-slider {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+  opacity: 0.6;
+}
+
+.trust-logo {
+  height: 40px;
+  filter: grayscale(1) brightness(2);
+  transition: var(--transition-normal);
+  cursor: pointer;
+}
+
+.trust-logo:hover {
+  filter: grayscale(0) brightness(1);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ===================================
+   PROCESS SECTION
+   =================================== */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.process-item {
+  text-align: center;
+  position: relative;
+}
+
+.process-number {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--color-charcoal);
+  line-height: 1;
+  margin-bottom: -2rem;
+  opacity: 0.3;
+}
+
+.process-content {
+  position: relative;
+  z-index: 1;
+}
+
+.process-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 /* ===================================
@@ -746,6 +829,138 @@ a:hover {
 .service-card p {
   line-height: 1.8;
   color: var(--color-gray-light);
+}
+
+/* ===================================
+   PRICING SECTION
+   =================================== */
+.pricing-section {
+  background: var(--color-black);
+  padding: var(--spacing-xl) 0;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.pricing-card {
+  background: var(--color-dark);
+  border: 2px solid var(--color-charcoal);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card.featured {
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(255, 77, 0, 0.15);
+}
+
+.pricing-badge {
+  position: absolute;
+  top: 20px;
+  right: -35px;
+  background: var(--gradient-primary);
+  color: var(--color-black);
+  padding: 0.5rem 3rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transform: rotate(45deg);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-primary);
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.08) translateY(-10px);
+}
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.pricing-header h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-white);
+}
+
+.pricing-category {
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+
+.pricing-price {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.price-currency {
+  font-size: 1.5rem;
+  vertical-align: top;
+  margin-right: 2px;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.price-amount {
+  font-size: 4rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: var(--color-white);
+  line-height: 1;
+}
+
+.price-period {
+  color: var(--color-gray-dark);
+  font-size: 1rem;
+}
+
+.pricing-features {
+  list-style: none;
+  margin-bottom: var(--spacing-lg);
+  flex-grow: 1;
+}
+
+.pricing-features li {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--color-charcoal);
+  color: var(--color-gray-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pricing-features li::before {
+  content: '✓';
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.pricing-features li:last-child {
+  border-bottom: none;
+}
+
+.pricing-button {
+  width: 100%;
 }
 
 /* ===================================
