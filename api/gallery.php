@@ -72,7 +72,7 @@ function createGalleryItem()
     $display_order = $_POST['display_order'] ?? null;
 
     // Validate category
-    $valid_categories = ['wedding', 'portrait', 'event', 'landscape'];
+    $valid_categories = ['wedding', 'portrait', 'event', 'landscape', 'sports'];
     if (!in_array($category, $valid_categories)) {
         sendErrorResponse('Invalid category', 400);
     }
@@ -149,7 +149,7 @@ function updateGalleryItem()
 
     // Validate category if provided
     if (isset($data->category)) {
-        $valid_categories = ['wedding', 'portrait', 'event', 'landscape'];
+        $valid_categories = ['wedding', 'portrait', 'event', 'landscape', 'sports'];
         if (!in_array($data->category, $valid_categories)) {
             sendErrorResponse('Invalid category', 400);
         }
