@@ -8,16 +8,15 @@
    CSS CUSTOM PROPERTIES
    =================================== */
 :root {
-  /* Color Palette - Black & Yellow Theme */
+  /* Color Palette - Black & Orange/Red Theme */
   --color-black: #000000;
   --color-dark: #0a0a0a;
   --color-darker: #1a1a1a;
   --color-charcoal: #2a2a2a;
 
-  --color-gold: #C9A961;
-  --color-gold-light: #D4B875;
-  --color-gold-dark: #B89850;
-  --color-gold: #B8860B;
+  --color-primary: #FF4D00;
+  --color-primary-light: #FF8040;
+  --color-primary-dark: #CC3E00;
 
   --color-white: #ffffff;
   --color-gray: #808080;
@@ -25,10 +24,10 @@
   --color-gray-dark: #404040;
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #C9A961 0%, #B89850 100%);
+  --gradient-primary: linear-gradient(135deg, #FF4D00 0%, #CC3E00 100%);
   --gradient-dark: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
   --gradient-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
-  --gradient-gold-shine: linear-gradient(135deg, #D4B875 0%, #C9A961 50%, #B89850 100%);
+  --gradient-shine: linear-gradient(135deg, #FF8040 0%, #FF4D00 50%, #CC3E00 100%);
 
   /* Typography */
   --font-heading: 'Inter', sans-serif;
@@ -50,8 +49,8 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-gold: 0 0 30px rgba(201, 169, 97, 0.4);
-  --shadow-gold-strong: 0 0 50px rgba(201, 169, 97, 0.6);
+  --shadow-primary: 0 0 30px rgba(255, 77, 0, 0.4);
+  --shadow-primary-strong: 0 0 50px rgba(255, 77, 0, 0.6);
 
   /* Border Radius */
   --radius-sm: 8px;
@@ -123,13 +122,13 @@ p {
 }
 
 a {
-  color: var(--color-gold);
+  color: var(--color-primary);
   text-decoration: none;
   transition: var(--transition-fast);
 }
 
 a:hover {
-  color: var(--color-gold-light);
+  color: var(--color-primary-light);
 }
 
 /* ===================================
@@ -138,7 +137,7 @@ a:hover {
 
 /* Gold Accent Text */
 .text-gold {
-  color: var(--color-gold);
+  color: var(--color-primary);
 }
 
 .text-gradient {
@@ -297,7 +296,7 @@ a:hover {
   background: rgba(0, 0, 0, 0.98);
   padding: 1rem 0;
   box-shadow: var(--shadow-md);
-  border-bottom: 2px solid var(--color-gold);
+  border-bottom: 2px solid var(--color-primary);
 }
 
 .nav-container {
@@ -351,7 +350,7 @@ a:hover {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--color-gold);
+  color: var(--color-primary);
 }
 
 .nav-links a:hover::after,
@@ -370,7 +369,7 @@ a:hover {
 .menu-toggle span {
   width: 25px;
   height: 2px;
-  background: var(--color-gold);
+  background: var(--color-primary);
   transition: var(--transition-fast);
 }
 
@@ -418,7 +417,7 @@ a:hover {
   right: 10%;
   width: 200px;
   height: 200px;
-  border: 3px solid var(--color-gold);
+  border: 3px solid var(--color-primary);
   border-radius: var(--radius-md);
   z-index: 2;
   opacity: 0.3;
@@ -431,7 +430,7 @@ a:hover {
   left: 8%;
   width: 150px;
   height: 150px;
-  border: 2px dashed var(--color-gold);
+  border: 2px dashed var(--color-primary);
   border-radius: 50%;
   z-index: 2;
   opacity: 0.2;
@@ -447,8 +446,8 @@ a:hover {
   background: repeating-linear-gradient(0deg,
       transparent,
       transparent 30px,
-      var(--color-gold) 30px,
-      var(--color-gold) 35px);
+      var(--color-primary) 30px,
+      var(--color-primary) 35px);
   opacity: 0.1;
   z-index: 2;
   transform: translateY(-50%);
@@ -476,7 +475,7 @@ a:hover {
 
 .hero-subtitle {
   font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--color-gold);
+  color: var(--color-primary);
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -556,22 +555,22 @@ a:hover {
   background: var(--gradient-primary);
   color: var(--color-black);
   font-weight: 700;
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-primary);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-gold-strong);
+  box-shadow: var(--shadow-primary-strong);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--color-gold);
-  border: 2px solid var(--color-gold);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
 
 .btn-secondary:hover {
-  background: var(--color-gold);
+  background: var(--color-primary);
   color: var(--color-black);
   transform: translateY(-3px);
 }
@@ -601,7 +600,7 @@ a:hover {
 }
 
 .section-subtitle {
-  color: var(--color-gold);
+  color: var(--color-primary);
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -627,7 +626,7 @@ a:hover {
 }
 
 .featured-item:hover {
-  border-color: var(--color-gold);
+  border-color: var(--color-primary);
   transform: translateY(-10px);
   box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
 }
@@ -672,7 +671,7 @@ a:hover {
 }
 
 .featured-category {
-  color: var(--color-gold);
+  color: var(--color-primary);
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -717,7 +716,7 @@ a:hover {
 
 .service-card:hover {
   background: var(--color-darker);
-  border-color: var(--color-gold);
+  border-color: var(--color-primary);
   transform: translateY(-10px);
   box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
 }
@@ -736,7 +735,7 @@ a:hover {
   justify-content: center;
   font-size: 2rem;
   margin-bottom: var(--spacing-md);
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-primary);
 }
 
 .service-card h3 {
@@ -754,8 +753,8 @@ a:hover {
    =================================== */
 .stats-section {
   background: var(--color-black);
-  border-top: 2px solid var(--color-gold);
-  border-bottom: 2px solid var(--color-gold);
+  border-top: 2px solid var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
 }
 
 .stats {
@@ -816,14 +815,14 @@ a:hover {
   top: 20px;
   left: 20px;
   font-size: 5rem;
-  color: var(--color-gold);
+  color: var(--color-primary);
   opacity: 0.2;
   font-family: var(--font-heading);
   line-height: 1;
 }
 
 .testimonial-card:hover {
-  border-color: var(--color-gold);
+  border-color: var(--color-primary);
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
 }
@@ -855,7 +854,7 @@ a:hover {
   font-weight: 700;
   font-size: 1.3rem;
   color: var(--color-black);
-  border: 2px solid var(--color-gold);
+  border: 2px solid var(--color-primary);
 }
 
 .author-name {
@@ -875,7 +874,7 @@ a:hover {
 .contact-cta {
   background: var(--gradient-dark);
   text-align: center;
-  border-top: 2px solid var(--color-gold);
+  border-top: 2px solid var(--color-primary);
 }
 
 .contact-cta h2 {
@@ -895,7 +894,7 @@ a:hover {
   padding: 150px 0 100px;
   text-align: center;
   background: var(--gradient-dark);
-  border-bottom: 3px solid var(--color-gold);
+  border-bottom: 3px solid var(--color-primary);
   position: relative;
 }
 
@@ -913,7 +912,7 @@ a:hover {
 }
 
 .page-breadcrumb a {
-  color: var(--color-gold);
+  color: var(--color-primary);
 }
 
 .page-breadcrumb span {
@@ -926,7 +925,7 @@ a:hover {
 .footer {
   background: var(--color-black);
   padding: var(--spacing-lg) 0 var(--spacing-md);
-  border-top: 3px solid var(--color-gold);
+  border-top: 3px solid var(--color-primary);
 }
 
 .footer-content {
@@ -939,7 +938,7 @@ a:hover {
 .footer-section h3 {
   margin-bottom: var(--spacing-md);
   font-size: 1.4rem;
-  color: var(--color-gold);
+  color: var(--color-primary);
 }
 
 .footer-section p {
@@ -968,9 +967,9 @@ a:hover {
 
 .social-link:hover {
   background: var(--gradient-primary);
-  border-color: var(--color-gold);
+  border-color: var(--color-primary);
   transform: translateY(-3px) rotate(5deg);
-  box-shadow: var(--shadow-gold);
+  box-shadow: var(--shadow-primary);
 }
 
 .footer-links {
@@ -988,7 +987,7 @@ a:hover {
 }
 
 .footer-links a:hover {
-  color: var(--color-gold);
+  color: var(--color-primary);
   transform: translateX(5px);
 }
 
@@ -1000,7 +999,7 @@ a:hover {
 }
 
 .footer-bottom a {
-  color: var(--color-gold);
+  color: var(--color-primary);
   font-weight: 600;
 }
 
@@ -1038,7 +1037,7 @@ a:hover {
   display: block;
   margin-bottom: var(--spacing-xs);
   font-weight: 600;
-  color: var(--color-gold);
+  color: var(--color-primary);
   letter-spacing: 0.05em;
 }
 
@@ -1060,7 +1059,7 @@ a:hover {
 .form-group textarea:focus,
 .form-group select:focus {
   outline: none;
-  border-color: var(--color-gold);
+  border-color: var(--color-primary);
   background: var(--color-black);
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
 }
@@ -1109,8 +1108,8 @@ a:hover {
 .filter-btn.active {
   background: var(--gradient-primary);
   color: var(--color-black);
-  border-color: var(--color-gold);
-  box-shadow: var(--shadow-gold);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-primary);
 }
 
 .gallery-grid {
@@ -1131,7 +1130,7 @@ a:hover {
 }
 
 .gallery-item:hover {
-  border-color: var(--color-gold);
+  border-color: var(--color-primary);
   transform: scale(1.05);
   box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
   z-index: 10;
@@ -1165,7 +1164,7 @@ a:hover {
     padding: 5rem 2rem;
     transition: var(--transition-normal);
     box-shadow: var(--shadow-lg);
-    border-left: 2px solid var(--color-gold);
+    border-left: 2px solid var(--color-primary);
   }
 
   .nav-links.active {
@@ -1243,12 +1242,12 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-gold);
+  background: var(--color-primary);
   border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gold-light);
+  background: var(--color-primary-light);
 }
 
 /* ===================================
@@ -1283,7 +1282,7 @@ a:hover {
 .whatsapp-float:hover {
   transform: scale(1.1) translateY(-5px);
   box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
-  border-color: var(--color-gold);
+  border-color: var(--color-primary);
 }
 
 .whatsapp-float::before {
