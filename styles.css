@@ -382,6 +382,39 @@ a:hover {
   border-bottom: 2px solid var(--color-primary);
 }
 
+/* Service Sub-Navigation */
+.service-menu {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 90px;
+  z-index: 99;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 1rem;
+  margin-bottom: 5rem;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border: 1px solid rgba(255, 77, 0, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.service-menu .btn-secondary {
+  padding: 0.7rem 1.2rem;
+  font-size: 0.85rem;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.service-menu .btn-secondary:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
 .nav-container {
   display: flex;
   justify-content: space-between;
