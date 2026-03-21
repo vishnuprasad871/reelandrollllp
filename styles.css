@@ -8,25 +8,26 @@
    CSS CUSTOM PROPERTIES
    =================================== */
 :root {
-  /* Color Palette - Black & Orange/Red Theme */
-  --color-black: #000000;
-  --color-dark: #0a0a0a;
-  --color-darker: #1a1a1a;
-  --color-charcoal: #2a2a2a;
+  /* Color Palette - White & Orange Theme */
+  --color-black: #ffffff;
+  --color-dark: #fcfcfc;
+  --color-darker: #f5f5f5;
+  --color-charcoal: #eeeeee;
 
   --color-primary: #FF4D00;
   --color-primary-light: #FF8040;
   --color-primary-dark: #CC3E00;
 
-  --color-white: #ffffff;
-  --color-gray: #808080;
-  --color-gray-light: #a0a0a0;
-  --color-gray-dark: #404040;
+  --color-white: #121212;
+  --color-gray: #666666;
+  --color-gray-light: #333333;
+  --color-gray-dark: #bbbbbb;
+  --color-yellow: var(--color-primary);
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #FF4D00 0%, #CC3E00 100%);
-  --gradient-dark: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-  --gradient-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%);
+  --gradient-dark: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+  --gradient-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.5) 100%);
   --gradient-shine: linear-gradient(135deg, #FF8040 0%, #FF4D00 50%, #CC3E00 100%);
 
   /* Typography */
@@ -46,11 +47,12 @@
   --transition-slow: 0.5s ease;
 
   /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-primary: 0 0 30px rgba(255, 77, 0, 0.4);
-  --shadow-primary-strong: 0 0 50px rgba(255, 77, 0, 0.6);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-primary: 0 0 30px rgba(255, 77, 0, 0.2);
+  --shadow-primary-strong: 0 0 50px rgba(255, 77, 0, 0.3);
+  --shadow-yellow: var(--shadow-primary);
 
   /* Border Radius */
   --radius-sm: 8px;
@@ -314,7 +316,7 @@ a:hover {
 
 .trust-logo {
   height: 40px;
-  filter: grayscale(1) brightness(2);
+  filter: grayscale(1) invert(0.8);
   transition: var(--transition-normal);
   cursor: pointer;
 }
@@ -369,15 +371,16 @@ a:hover {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1.5rem 0;
+  padding: 0.5rem 0;
   transition: var(--transition-normal);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .navbar.scrolled {
-  background: rgba(0, 0, 0, 0.98);
-  padding: 1rem 0;
+  background: rgba(255, 255, 255, 0.98);
+  padding: 0.3rem 0;
   box-shadow: var(--shadow-md);
   border-bottom: 2px solid var(--color-primary);
 }
@@ -419,18 +422,73 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
 }
 
 .logo {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .logo img {
   height: 50px;
   width: auto;
   transition: var(--transition-normal);
-  filter: drop-shadow(0 0 10px rgba(201, 169, 97, 0.3));
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+}
+
+.nav-links-left,
+.nav-links-right {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  flex: 1;
+}
+
+.nav-links-left {
+  justify-content: flex-end;
+}
+
+.nav-links-right {
+  justify-content: flex-start;
+}
+
+.nav-links-left a,
+.nav-links-right a {
+  color: var(--color-white);
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  transition: var(--transition-fast);
+  padding: 0.5rem 0;
+  white-space: nowrap;
+}
+
+.nav-links-left a::after,
+.nav-links-right a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: var(--transition-normal);
+}
+
+.nav-links-left a:hover,
+.nav-links-left a.active,
+.nav-links-right a:hover,
+.nav-links-right a.active {
+  color: var(--color-primary);
+}
+
+.nav-links-left a:hover::after,
+.nav-links-left a.active::after,
+.nav-links-right a:hover::after,
+.nav-links-right a.active::after {
+  width: 100%;
 }
 
 .logo img:hover {
@@ -500,6 +558,7 @@ a:hover {
   justify-content: center;
   overflow: hidden;
   background: var(--color-black);
+  padding-top: 80px;
 }
 
 .hero-background {
@@ -520,9 +579,9 @@ a:hover {
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg,
-      rgba(0, 0, 0, 0.85) 0%,
-      rgba(0, 0, 0, 0.6) 50%,
-      rgba(0, 0, 0, 0.85) 100%);
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(255, 255, 255, 0.85) 100%);
   z-index: 1;
 }
 
@@ -1139,7 +1198,7 @@ a:hover {
    PAGE HEADER (For Inner Pages)
    =================================== */
 .page-header {
-  padding: 150px 0 100px;
+  padding: 180px 0 100px;
   text-align: center;
   background: var(--gradient-dark);
   border-bottom: 3px solid var(--color-primary);
@@ -1399,14 +1458,15 @@ a:hover {
    RESPONSIVE DESIGN
    =================================== */
 @media (max-width: 968px) {
-  .nav-links {
+  .nav-links-left,
+  .nav-links-right {
     position: fixed;
     top: 0;
     right: -100%;
     height: 100vh;
     width: 70%;
     max-width: 300px;
-    background: rgba(0, 0, 0, 0.98);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
     padding: 5rem 2rem;
@@ -1415,7 +1475,19 @@ a:hover {
     border-left: 2px solid var(--color-primary);
   }
 
-  .nav-links.active {
+  .nav-links-left {
+    padding-bottom: 0;
+  }
+
+  .nav-links-right {
+    padding-top: 15rem; /* Offset for left links */
+    background: transparent; /* Overlay on left */
+    box-shadow: none;
+    border-left: none;
+  }
+
+  .nav-links-left.active,
+  .nav-links-right.active {
     right: 0;
   }
 

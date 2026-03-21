@@ -7,19 +7,24 @@
 // MOBILE MENU TOGGLE
 // ===================================
 const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
+const navLinksLeft = document.getElementById('navLinksLeft');
+const navLinksRight = document.getElementById('navLinksRight');
 
-if (menuToggle && navLinks) {
+if (menuToggle && (navLinksLeft || navLinksRight)) {
   menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    navLinksLeft?.classList.toggle('active');
+    navLinksRight?.classList.toggle('active');
     menuToggle.classList.toggle('active');
   });
 
   // Close menu when clicking on a link
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-      menuToggle.classList.remove('active');
+  [navLinksLeft, navLinksRight].forEach(nav => {
+    nav?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinksLeft?.classList.remove('active');
+        navLinksRight?.classList.remove('active');
+        menuToggle.classList.remove('active');
+      });
     });
   });
 }
@@ -41,7 +46,7 @@ window.addEventListener('scroll', () => {
 // ACTIVE PAGE HIGHLIGHTING
 // ===================================
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.nav-links a').forEach(link => {
+document.querySelectorAll('.nav-links-left a, .nav-links-right a').forEach(link => {
   const href = link.getAttribute('href');
   if (href === currentPage || (currentPage === '' && href === 'index.html')) {
     link.classList.add('active');
