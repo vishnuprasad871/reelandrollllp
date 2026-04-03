@@ -11,8 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Stylesheet -->
@@ -50,7 +49,7 @@
             <a href="index.html" class="logo"><img src="assets/Logo.png" alt="Reel & Roll Photography"></a>
             <ul class="nav-links-right" id="navLinksRight">
                 <li><a href="portfolio.html" class="active">Portfolio</a></li>
-                <li><a href="testimonials.html">Reviews</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="contact.html" class="btn-nav-cta">Book Now</a></li>
             </ul>
             <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
@@ -101,7 +100,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>Reel & Roll</h4>
-                    <p>Professional photography and videography services capturing your most precious moments since 2010.</p>
+                    <p>Professional photography and videography services capturing your most precious moments since
+                        2010.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
@@ -137,23 +137,23 @@
     <!-- Scripts -->
     <script src="script.js"></script>
     <script>
-    (function(){
-        const STORAGE_KEY = 'rnr_videos';
-        const grid = document.getElementById('videoGrid');
-        const filterBtns = document.querySelectorAll('#videoFilters .filter-btn');
+        (function () {
+            const STORAGE_KEY = 'rnr_videos';
+            const grid = document.getElementById('videoGrid');
+            const filterBtns = document.querySelectorAll('#videoFilters .filter-btn');
 
-        function getVideos() {
-            try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { return []; }
-        }
-
-        function renderVideos(cat) {
-            const videos = getVideos();
-            const filtered = cat === 'all' ? videos : videos.filter(v => v.category === cat);
-            if (!filtered.length) {
-                grid.innerHTML = '<div class="empty-state" style="text-align:center;padding:5rem 0;color:var(--color-gray);"><p style="font-size:1.2rem;">No videos in this category yet.</p></div>';
-                return;
+            function getVideos() {
+                try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (e) { return []; }
             }
-            grid.innerHTML = filtered.map(v => `
+
+            function renderVideos(cat) {
+                const videos = getVideos();
+                const filtered = cat === 'all' ? videos : videos.filter(v => v.category === cat);
+                if (!filtered.length) {
+                    grid.innerHTML = '<div class="empty-state" style="text-align:center;padding:5rem 0;color:var(--color-gray);"><p style="font-size:1.2rem;">No videos in this category yet.</p></div>';
+                    return;
+                }
+                grid.innerHTML = filtered.map(v => `
                 <div class="vimeo-card" data-cat="${v.category}">
                     <div class="vimeo-wrapper">
                         <iframe src="https://player.vimeo.com/video/${v.vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479"
@@ -170,18 +170,18 @@
                     </div>
                 </div>
             `).join('');
-        }
+            }
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function(){
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                renderVideos(this.dataset.cat);
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    renderVideos(this.dataset.cat);
+                });
             });
-        });
 
-        renderVideos('all');
-    })();
+            renderVideos('all');
+        })();
     </script>
 </body>
 
