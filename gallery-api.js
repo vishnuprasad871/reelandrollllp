@@ -88,6 +88,55 @@ function renderGallery(items) {
             item.classList.add('active');
         });
     }, 100);
+
+    // Initialize Lightbox on first render
+    setupLightbox();
+}
+
+/**
+ * Setup Lightbox functionality
+ */
+function setupLightbox() {
+    const modal = document.getElementById('lightboxModal');
+    const modalImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('lightboxClose');
+
+    if (!modal || !modalImg) return;
+
+    // Use event delegation for gallery items
+    const galleryGrid = document.getElementById('galleryGrid');
+    
+    // Clear previous listener if any (to avoid duplicates)
+    const newGrid = galleryGrid.cloneNode(true);
+    galleryGrid.parentNode.replaceChild(newGrid, galleryGrid);
+
+    newGrid.addEventListener('click', (e) => {
+        const item = e.target.closest('.gallery-item');
+        if (item) {
+            const img = item.querySelector('img');
+            if (img) {
+                modalImg.src = img.src;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scroll
+            }
+        }
+    });
+
+    // Close modal events
+    closeBtn.onclick = () => closeModal();
+    modal.onclick = (e) => {
+        if (e.target === modal) closeModal();
+    };
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 }
 
 /**

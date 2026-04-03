@@ -1543,7 +1543,7 @@ a:hover {
 }
 
 /* ===================================
-   GALLERY GRID
+   GALLERY GRID (Masonry Layout)
    =================================== */
 .gallery-container {
   padding: var(--spacing-xl) 0;
@@ -1581,38 +1581,113 @@ a:hover {
 }
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--spacing-md);
+  columns: 3 300px;
+  column-gap: var(--spacing-md);
+  display: block; /* Overriding grid */
 }
 
 .gallery-item {
+  display: inline-block;
+  width: 100%;
   position: relative;
-  aspect-ratio: 1;
+  margin-bottom: var(--spacing-md);
   border-radius: var(--radius-md);
   overflow: hidden;
   cursor: pointer;
   box-shadow: var(--shadow-md);
   border: 2px solid transparent;
   transition: all var(--transition-normal);
+  break-inside: avoid;
 }
 
 .gallery-item:hover {
   border-color: var(--color-primary);
-  transform: scale(1.05);
-  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(255, 77, 0, 0.3);
   z-index: 10;
 }
 
 .gallery-item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
   transition: transform var(--transition-slow);
 }
 
 .gallery-item:hover img {
-  transform: scale(1.15);
+  transform: scale(1.05);
+}
+
+/* ===================================
+   LIGHTBOX MODAL
+   =================================== */
+.lightbox-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: rgba(0, 0, 0, 0.98);
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+
+.lightbox-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.lightbox-content {
+  max-width: 95%;
+  max-height: 90vh;
+  position: relative;
+  cursor: default;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.lightbox-close:hover {
+  background: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    columns: 2 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    columns: 1;
+  }
 }
 
 /* ===================================
