@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Stylesheet -->
@@ -26,19 +26,37 @@
             <ul class="nav-links-left" id="navLinksLeft">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
+                <li class="has-dropdown">
+                    <a href="services.html">Photography</a>
+                    <ul class="dropdown">
+                        <li><a href="services.html#wedding">Wedding</a></li>
+                        <li><a href="services.html#portrait">Portrait</a></li>
+                        <li><a href="services.html#event">Event Coverage</a></li>
+                        <li><a href="services.html#landscape">Landscape & Sports</a></li>
+                        <li><a href="services.html#corporate">Corporate</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="video-gallery.html">Videography</a>
+                    <ul class="dropdown">
+                        <li><a href="video-gallery.html#weddings">Wedding Films</a></li>
+                        <li><a href="video-gallery.html#events">Event Coverage</a></li>
+                        <li><a href="video-gallery.html#corporate">Corporate Films</a></li>
+                        <li><a href="video-gallery.html#commercial">Commercial</a></li>
+                    </ul>
+                </li>
             </ul>
             <a href="index.html" class="logo"><img src="assets/Logo.png" alt="Reel & Roll Photography"></a>
             <ul class="nav-links-right" id="navLinksRight">
                 <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="testimonials.html">Reviews</a></li>
+                <li><a href="contact.html" class="btn-nav-cta active">Book Now</a></li>
             </ul>
-            <div class="menu-toggle" id="menuToggle">
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -193,9 +211,8 @@
                 </div>
 
                 <div class="service-card reveal" style="margin-bottom: 1.5rem;">
-                    <h3 style="color: var(--color-yellow);">What is your pricing?</h3>
-                    <p>Our pricing varies based on the type of photography, duration, and specific requirements. Contact
-                        us for a custom quote tailored to your needs.</p>
+                    <h3 style="color: var(--color-yellow);">How do I get started?</h3>
+                    <p>Simply reach out via the contact form, WhatsApp, or email. We'll schedule a discovery call to discuss your vision, goals, and how we can best serve you.</p>
                 </div>
 
                 <div class="service-card reveal" style="margin-bottom: 1.5rem;">

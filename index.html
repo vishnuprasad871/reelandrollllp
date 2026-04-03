@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Stylesheet -->
@@ -29,19 +29,37 @@
             <ul class="nav-links-left" id="navLinksLeft">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
+                <li class="has-dropdown">
+                    <a href="services.html">Photography</a>
+                    <ul class="dropdown">
+                        <li><a href="services.html#wedding">Wedding</a></li>
+                        <li><a href="services.html#portrait">Portrait</a></li>
+                        <li><a href="services.html#event">Event Coverage</a></li>
+                        <li><a href="services.html#landscape">Landscape & Sports</a></li>
+                        <li><a href="services.html#corporate">Corporate</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="video-gallery.html">Videography</a>
+                    <ul class="dropdown">
+                        <li><a href="video-gallery.html#weddings">Wedding Films</a></li>
+                        <li><a href="video-gallery.html#events">Event Coverage</a></li>
+                        <li><a href="video-gallery.html#corporate">Corporate Films</a></li>
+                        <li><a href="video-gallery.html#commercial">Commercial</a></li>
+                    </ul>
+                </li>
             </ul>
             <a href="index.html" class="logo"><img src="assets/Logo.png" alt="Reel & Roll Photography"></a>
             <ul class="nav-links-right" id="navLinksRight">
                 <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="testimonials.html">Reviews</a></li>
+                <li><a href="contact.html" class="btn-nav-cta">Book Now</a></li>
             </ul>
-            <div class="menu-toggle" id="menuToggle">
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -157,76 +175,7 @@
         </div>
     </section>
 
-    <!-- Pricing Summary Section -->
-    <section class="section section-darker">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-subtitle">Investment</p>
-                <h2>Choose Your <span class="text-gradient">Experience</span></h2>
-                <p>Transparent pricing for premium photography services</p>
-            </div>
 
-            <div class="pricing-grid">
-                <!-- Wedding -->
-                <div class="pricing-card reveal">
-                    <div class="pricing-header">
-                        <span class="pricing-category">Weddings</span>
-                        <h3>Silver</h3>
-                    </div>
-                    <div class="pricing-price">
-                        <span class="price-currency">AED</span>
-                        <span class="price-amount">3,500</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>8 Hours Coverage</li>
-                        <li>300+ Retouched Photos</li>
-                        <li>Online Private Gallery</li>
-                        <li>Consultation Session</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-secondary pricing-button"><span>Inquire Now</span></a>
-                </div>
-
-                <!-- Portrait - Featured -->
-                <div class="pricing-card featured reveal">
-                    <div class="pricing-badge">Popular</div>
-                    <div class="pricing-header">
-                        <span class="pricing-category">Portraits</span>
-                        <h3>Signature</h3>
-                    </div>
-                    <div class="pricing-price">
-                        <span class="price-currency">AED</span>
-                        <span class="price-amount">750</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>90 Minute Session</li>
-                        <li>20 Masterpiece Retouches</li>
-                        <li>2 Outfit Changes</li>
-                        <li>Professional Direction</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-primary pricing-button"><span>Book Signature</span></a>
-                </div>
-
-                <!-- Events -->
-                <div class="pricing-card reveal">
-                    <div class="pricing-header">
-                        <span class="pricing-category">Events</span>
-                        <h3>Half-Day</h3>
-                    </div>
-                    <div class="pricing-price">
-                        <span class="price-currency">AED</span>
-                        <span class="price-amount">1,500</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>4 Hours Coverage</li>
-                        <li>150+ Edited Photos</li>
-                        <li>Fast 3-Day Delivery</li>
-                        <li>On-site Highlights</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-secondary pricing-button"><span>Secure Date</span></a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Statistics Section -->
     <section class="stats-section section">

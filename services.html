@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Explore our photography services - Wedding, Portrait, Event, Commercial, and more">
-    <title>Services | Reel and Roll Photography</title>
+    <title>Photography Services | Reel and Roll Photography</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Stylesheet -->
@@ -27,30 +27,48 @@
             <ul class="nav-links-left" id="navLinksLeft">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="services.html" class="active">Services</a></li>
+                <li class="has-dropdown">
+                    <a href="services.html" class="active">Photography</a>
+                    <ul class="dropdown">
+                        <li><a href="services.html#wedding">Wedding</a></li>
+                        <li><a href="services.html#portrait">Portrait</a></li>
+                        <li><a href="services.html#event">Event Coverage</a></li>
+                        <li><a href="services.html#landscape">Landscape & Sports</a></li>
+                        <li><a href="services.html#corporate">Corporate</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="video-gallery.html">Videography</a>
+                    <ul class="dropdown">
+                        <li><a href="video-gallery.html#weddings">Wedding Films</a></li>
+                        <li><a href="video-gallery.html#events">Event Coverage</a></li>
+                        <li><a href="video-gallery.html#corporate">Corporate Films</a></li>
+                        <li><a href="video-gallery.html#commercial">Commercial</a></li>
+                    </ul>
+                </li>
             </ul>
             <a href="index.html" class="logo"><img src="assets/Logo.png" alt="Reel & Roll Photography"></a>
             <ul class="nav-links-right" id="navLinksRight">
                 <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="testimonials.html">Reviews</a></li>
+                <li><a href="contact.html" class="btn-nav-cta">Book Now</a></li>
             </ul>
-            <div class="menu-toggle" id="menuToggle">
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1 class="fade-in-up">Our <span class="text-gradient">Services</span></h1>
+            <h1 class="fade-in-up">Photography <span class="text-gradient">Services</span></h1>
             <div class="page-breadcrumb fade-in-up">
                 <a href="index.html">Home</a>
                 <span>/</span>
-                <span>Services</span>
+                <span>Photography</span>
             </div>
         </div>
     </section>
@@ -60,11 +78,12 @@
         <div class="container">
             <!-- Service Sub-Navigation Menu -->
             <div class="service-menu">
-                <a href="#wedding" class="btn btn-secondary"><span>💍 Wedding</span></a>
-                <a href="#portrait" class="btn btn-secondary"><span>👤 Portrait</span></a>
-                <a href="#event" class="btn btn-secondary"><span>🎉 Event</span></a>
-                <a href="#landscape" class="btn btn-secondary"><span>🏞️ Landscape</span></a>
-                <a href="#sports" class="btn btn-secondary"><span>⚽ Sports</span></a>
+                <a href="#wedding" class="btn btn-secondary"><span>Wedding</span></a>
+                <a href="#portrait" class="btn btn-secondary"><span>Portrait</span></a>
+                <a href="#event" class="btn btn-secondary"><span>Events</span></a>
+                <a href="#landscape" class="btn btn-secondary"><span>Landscape</span></a>
+                <a href="#sports" class="btn btn-secondary"><span>Sports</span></a>
+                <a href="#corporate" class="btn btn-secondary"><span>Corporate</span></a>
             </div>
 
             <!-- Wedding Photography -->
@@ -80,17 +99,7 @@
                     <h2>Wedding Photography</h2>
                     <p>Your wedding is not just an event; it's the beginning of your legacy. We capture the grand scale and the intimate whispers with equal artistry.</p>
                     
-                    <div class="pricing-summary-box glass-panel" style="margin-top: 2rem; padding: 1.5rem; border-radius: 12px;">
-                        <span style="color: var(--color-primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem;">Packages Start From</span>
-                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-white);">AED 3,500</div>
-                        <ul style="color: var(--color-gray-light); line-height: 1.8; margin-top: 1rem; list-style: none; padding: 0;">
-                            <li>✓ Full Day & Half Day Options</li>
-                            <li>✓ Luxury Hardcover Albums</li>
-                            <li>✓ Cinematic Video Add-ons</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Check Availability</span></a>
+                    <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Get A Quote</span></a>
                 </div>
             </div>
 
@@ -103,17 +112,7 @@
                     <h2>Portrait Photography</h2>
                     <p>Elevate your personal brand or capture your family's essence. We don't just take pictures; we create character-driven portraits that command attention.</p>
                     
-                    <div class="pricing-summary-box glass-panel" style="margin-top: 2rem; padding: 1.5rem; border-radius: 12px;">
-                        <span style="color: var(--color-primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem;">Sessions Start From</span>
-                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-white);">AED 400</div>
-                        <ul style="color: var(--color-gray-light); line-height: 1.8; margin-top: 1rem; list-style: none; padding: 0;">
-                            <li>✓ Studio or Premium Location</li>
-                            <li>✓ High-End Skin Retouching</li>
-                            <li>✓ Multiple Look Changes</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Book Your Session</span></a>
+                    <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Get A Quote</span></a>
                 </div>
                 <div class="reveal">
                     <img src="assets/portfolio_portrait_1770402268053.png" alt="Portrait Photography"
@@ -134,17 +133,7 @@
                     <h2>Event Coverage</h2>
                     <p>From high-profile corporate galas to exclusive private celebrations, we capture the electricity, the scale, and the candid moments that define your event.</p>
                     
-                    <div class="pricing-summary-box glass-panel" style="margin-top: 2rem; padding: 1.5rem; border-radius: 12px;">
-                        <span style="color: var(--color-primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem;">Coverage Starts From</span>
-                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-white);">AED 1,500</div>
-                        <ul style="color: var(--color-gray-light); line-height: 1.8; margin-top: 1rem; list-style: none; padding: 0;">
-                            <li>✓ Half-Day & Full-Day Bookings</li>
-                            <li>✓ 24-Hour Express Highlights</li>
-                            <li>✓ Multi-Camera Team Available</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Request a Quote</span></a>
+                    <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Get A Quote</span></a>
             </div>
 
             <!-- Landscape Photography -->
@@ -156,17 +145,7 @@
                     <h2>Landscape Photography</h2>
                     <p>Breathtaking fine-art prints of the world's most spectacular landscapes, from the dunes of the Dubai desert to global natural wonders.</p>
                     
-                    <div class="pricing-summary-box glass-panel" style="margin-top: 2rem; padding: 1.5rem; border-radius: 12px;">
-                        <span style="color: var(--color-primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem;">Prints & Licensing From</span>
-                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-white);">AED 600</div>
-                        <ul style="color: var(--color-gray-light); line-height: 1.8; margin-top: 1rem; list-style: none; padding: 0;">
-                            <li>✓ Gallery Quality Fine-Art Prints</li>
-                            <li>✓ Commercial Licensing Available</li>
-                            <li>✓ Custom Sizing & Framing Options</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Request a Catalog</span></a>
+                    <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Inquire Now</span></a>
                 </div>
                 <div class="reveal">
                     <img src="assets/portfolio_landscape_1770402324328.png" alt="Landscape Photography"
@@ -187,17 +166,23 @@
                     <h2>Sports Photography</h2>
                     <p>Capturing the raw emotion and peak performance of athletes. High-speed, split-second photography for professional events and individual athletes.</p>
                     
-                    <div class="pricing-summary-box glass-panel" style="margin-top: 2rem; padding: 1.5rem; border-radius: 12px;">
-                        <span style="color: var(--color-primary); font-weight: 700; text-transform: uppercase; font-size: 0.8rem;">Game Coverage From</span>
-                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--color-white);">AED 1,200</div>
-                        <ul style="color: var(--color-gray-light); line-height: 1.8; margin-top: 1rem; list-style: none; padding: 0;">
-                            <li>✓ Professional Action Sequences</li>
-                            <li>✓ High-Speed Burst Captures</li>
-                            <li>✓ Same-Day Highlight Turnaround</li>
-                        </ul>
-                    </div>
-                    
-                    <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Secure Coverage</span></a>
+                    <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Get in Touch</span></a>
+                </div>
+            </div>
+
+            <!-- Corporate Photography -->
+            <div id="corporate"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 8rem;">
+                <div class="reveal">
+                    <div class="service-icon" style="margin-bottom: 1rem;">🏢</div>
+                    <p class="section-subtitle">Professional Excellence</p>
+                    <h2>Corporate Photography</h2>
+                    <p>Elevate your brand with powerful corporate imagery. From executive headshots and team photography to office environments and product shoots — we deliver visuals that communicate authority, culture, and vision.</p>
+                    <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Get A Quote</span></a>
+                </div>
+                <div class="reveal">
+                    <img src="assets/portfolio_portrait_1770402268053.png" alt="Corporate Photography"
+                        style="width: 100%; border-radius: 16px; border: 3px solid var(--color-primary); box-shadow: var(--shadow-primary);">
                 </div>
             </div>
 
@@ -253,8 +238,8 @@
     <section class="contact-cta section">
         <div class="container reveal">
             <h2>Ready to Book Your <span class="text-gradient">Session</span>?</h2>
-            <p>Contact us today for custom pricing and package options tailored to your needs</p>
-            <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Get a Quote</span></a>
+            <p>Ready to bring your vision to life? Let's discuss your project and create something extraordinary together.</p>
+            <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Start a Conversation</span></a>
         </div>
     </section>
 
