@@ -8,8 +8,8 @@
 // ===================================
 (function () {
   // Build mobile overlay from desktop nav links
-  const leftLinks = document.querySelectorAll('.nav-links-left a');
-  const rightLinks = document.querySelectorAll('.nav-links-right a:not(.btn-nav-cta)');
+  const leftLinks = document.querySelectorAll('.nav-links-left > li > a');
+  const rightLinks = document.querySelectorAll('.nav-links-right > li > a:not(.btn-nav-cta)');
   const ctaLink = document.querySelector('.nav-links-right .btn-nav-cta');
 
   // Create overlay
