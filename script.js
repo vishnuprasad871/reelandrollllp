@@ -137,7 +137,8 @@ document.querySelectorAll('.reveal').forEach(element => {
 const filterBtns = document.querySelectorAll('.filter-btn');
 const galleryItems = document.querySelectorAll('.gallery-item');
 
-if (filterBtns.length > 0) {
+// Only run static filtering if not on the main gallery page which uses gallery-api.js
+if (filterBtns.length > 0 && !document.getElementById('galleryGrid')) {
   filterBtns.forEach(btn => {
     btn.addEventListener('click', function () {
       // Remove active class from all buttons

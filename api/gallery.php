@@ -37,10 +37,15 @@ function getGallery()
     $gallery = new Gallery();
     $items = $gallery->getAll($category);
 
-    // Add full URL to images
-    $baseUrl = APP_URL . '/assets/';
-    $items = array_map(function ($item) use ($baseUrl) {
-        $item['image_url'] = $baseUrl . $item['filename'];
+    // Add full URL to images based on storage path
+    $items = array_map(function ($item) {
+        // Assets are the original portfolio images
+        // Uploads have a filename starting with 'gallery_'
+        if (strpos($item['filename'], 'gallery_') === 0) {
+            $item['image_url'] = APP_URL . '/uploads/gallery/' . $item['filename'];
+        } else {
+            $item['image_url'] = APP_URL . '/assets/' . $item['filename'];
+        }
         return $item;
     }, $items);
 
@@ -93,7 +98,24 @@ function createGalleryItem()
 
     // Move uploaded file
     if (!move_uploaded_file($file['tmp_name'], $target_path)) {
-        sendErrorResponse('Failed to upload image', 500);
+        $error_detail = "Failed to move file to " . $target_path . ". ";
+        
+        // Debugging info
+        if (!file_exists(UPLOAD_DIR)) {
+            $error_detail .= "Upload directory " . UPLOAD_DIR . " DOES NOT EXIST. ";
+        } elseif (!is_writable(UPLOAD_DIR)) {
+            $error_detail .= "Upload directory " . UPLOAD_DIR . " IS NOT WRITABLE. ";
+        }
+        
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            $error_detail .= "PHP Upload Error Code: " . $file['error'];
+        }
+
+        if (APP_DEBUG) {
+            sendErrorResponse('Failed to upload image: ' . $error_detail, 500);
+        } else {
+            sendErrorResponse('Failed to upload image: ' . $error_detail, 500);
+        }
     }
 
     // Save to database

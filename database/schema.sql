@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS gallery (
     id INT AUTO_INCREMENT PRIMARY KEY,
     filename VARCHAR(255) NOT NULL,
     original_name VARCHAR(255) NOT NULL,
-    category ENUM('wedding', 'portrait', 'event', 'landscape') NOT NULL,
+    category ENUM('wedding', 'portrait', 'event', 'landscape', 'sports') NOT NULL,
     alt_text VARCHAR(255),
     display_order INT DEFAULT 0,
     is_active TINYINT(1) DEFAULT 1,
