@@ -81,7 +81,15 @@
             </div>
 
             <div class="contact-container">
-                <form class="contact-form reveal" id="contactForm">
+                <form class="contact-form reveal" id="contactForm"
+                    action="https://formsubmit.co/reelrollphotography26@gmail.com"
+                    method="POST">
+                    <!-- FormSubmit config -->
+                    <input type="hidden" name="_subject" value="New Booking Enquiry - Reel and Roll Photography">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://reelandroll.com/contact.html?sent=1">
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Your Name *</label>
@@ -283,6 +291,20 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+
+    <!-- Contact form success message -->
+    <script>
+        if (window.location.search.includes('sent=1')) {
+            const header = document.querySelector('.contact-form-section .section-header p:last-child');
+            if (header) {
+                header.textContent = '';
+            }
+            const banner = document.createElement('div');
+            banner.style.cssText = 'background:rgba(72,199,142,0.12);border:1px solid rgba(72,199,142,0.3);color:#48c78e;padding:1rem 1.5rem;border-radius:8px;text-align:center;font-weight:600;margin-top:1rem;';
+            banner.textContent = 'Message sent! We\'ll get back to you within 24 hours.';
+            document.querySelector('.contact-container').prepend(banner);
+        }
+    </script>
 </body>
 
 </html>
