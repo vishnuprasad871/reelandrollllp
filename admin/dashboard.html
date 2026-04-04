@@ -114,12 +114,12 @@
                 <!-- Video Gallery Tab -->
                 <div id="videoTab" class="tab-panel" style="display:none;">
                     <section class="upload-section">
-                        <h2>Add Vimeo Video</h2>
+                        <h2>Add YouTube Video</h2>
                         <form id="videoForm" class="upload-form">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="vimeoUrl">Vimeo URL or Video ID *</label>
-                                    <input type="text" id="vimeoUrl" placeholder="https://vimeo.com/123456789 or just 123456789" required>
+                                    <label for="youtubeUrl">YouTube URL *</label>
+                                    <input type="text" id="youtubeUrl" placeholder="https://youtube.com/watch?v=... or https://youtube.com/shorts/..." required>
                                 </div>
                                 <div class="form-group">
                                     <label for="videoCategory">Category *</label>
@@ -142,9 +142,15 @@
                                     <input type="number" id="videoYear" placeholder="2024" min="2000" max="2030" value="2024">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="videoDesc">Description (optional)</label>
-                                <textarea id="videoDesc" rows="3" placeholder="Brief description of the video..."></textarea>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="videoDesc">Description (optional)</label>
+                                    <textarea id="videoDesc" rows="2" placeholder="Brief description of the video..."></textarea>
+                                </div>
+                                <div class="form-group" style="display:flex;align-items:center;gap:0.75rem;padding-top:1.8rem;">
+                                    <input type="checkbox" id="videoVertical" style="width:18px;height:18px;accent-color:#FF4D00;cursor:pointer;">
+                                    <label for="videoVertical" style="cursor:pointer;margin:0;">Vertical video (Shorts / Portrait)</label>
+                                </div>
                             </div>
                             <div id="videoMessage" class="message" style="display:none;"></div>
                             <button type="submit" class="btn-primary"><span>Add Video</span></button>

@@ -2618,3 +2618,13 @@ a:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* Vertical video support (YouTube Shorts / Portrait) */
+.vimeo-card.vertical {
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.vimeo-card.vertical .vimeo-wrapper {
+  padding-top: 177.78%; /* 9:16 */
+}

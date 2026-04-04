@@ -154,18 +154,18 @@
                     return;
                 }
                 grid.innerHTML = filtered.map(v => `
-                <div class="vimeo-card" data-cat="${v.category}">
+                <div class="vimeo-card${v.vertical ? ' vertical' : ''}" data-cat="${v.category}">
                     <div class="vimeo-wrapper">
-                        <iframe src="https://player.vimeo.com/video/${v.vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479"
+                        <iframe src="https://www.youtube.com/embed/${v.videoId}?rel=0&modestbranding=1"
                             frameborder="0"
-                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen
                             title="${v.title}">
                         </iframe>
                     </div>
                     <div class="vimeo-info">
                         <h4>${v.title}</h4>
-                        <p class="vimeo-meta">${v.categoryLabel} • ${v.year}</p>
+                        <p class="vimeo-meta">${v.categoryLabel} • ${v.year}${v.vertical ? ' • Vertical' : ''}</p>
                         ${v.description ? `<p class="vimeo-desc">${v.description}</p>` : ''}
                     </div>
                 </div>
