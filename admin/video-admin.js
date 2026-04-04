@@ -58,7 +58,7 @@ function renderVideoAdmin() {
         return `
         <div class="gallery-item-admin" style="background:#1e1e1e;border:1px solid #333;border-radius:12px;overflow:hidden;max-width:${maxWidth};">
             <div style="position:relative;padding-top:${aspectPadding};background:#000;">
-                <iframe src="https://www.youtube.com/embed/${v.videoId}?rel=0&modestbranding=1"
+                <iframe src="https://www.youtube.com/embed/${v.videoId}?rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&color=white"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen

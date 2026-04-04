@@ -156,7 +156,7 @@
                 grid.innerHTML = filtered.map(v => `
                 <div class="vimeo-card${v.vertical ? ' vertical' : ''}" data-cat="${v.category}">
                     <div class="vimeo-wrapper">
-                        <iframe src="https://www.youtube.com/embed/${v.videoId}?rel=0&modestbranding=1"
+                        <iframe src="https://www.youtube.com/embed/${v.videoId}?rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&color=white"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen
