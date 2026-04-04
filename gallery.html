@@ -48,8 +48,17 @@
             </ul>
             <a href="index.html" class="logo"><img src="assets/Logo.png" alt="Reel & Roll Photography"></a>
             <ul class="nav-links-right" id="navLinksRight">
-                <li><a href="portfolio.html" class="active">Portfolio</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li class="has-dropdown">
+                    <a href="gallery.html" class="active">Gallery</a>
+                    <ul class="dropdown">
+                        <li><a href="gallery.html?category=wedding">Wedding</a></li>
+                        <li><a href="gallery.html?category=portrait">Portrait</a></li>
+                        <li><a href="gallery.html?category=event">Event</a></li>
+                        <li><a href="gallery.html?category=landscape">Landscape</a></li>
+                        <li><a href="gallery.html?category=sports">Sports</a></li>
+                    </ul>
+                </li>
                 <li><a href="contact.html" class="btn-nav-cta">Book Now</a></li>
             </ul>
             <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
@@ -59,18 +68,6 @@
             </button>
         </div>
     </nav>
-
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1 class="fade-in-up">Photo <span class="text-gradient">Gallery</span></h1>
-            <div class="page-breadcrumb fade-in-up">
-                <a href="index.html">Home</a>
-                <span>/</span>
-                <span>Gallery</span>
-            </div>
-        </div>
-    </section>
 
     <!-- Gallery Section -->
     <section class="gallery-container">

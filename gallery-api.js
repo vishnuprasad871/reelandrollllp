@@ -12,6 +12,17 @@ let currentCategory = 'all';
  */
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('galleryGrid')) {
+        // Check for ?category= URL param (from nav dropdown links)
+        const urlCategory = new URLSearchParams(window.location.search).get('category');
+        if (urlCategory) {
+            currentCategory = urlCategory;
+            // Activate matching filter button
+            const matchBtn = document.querySelector(`.filter-btn[data-filter="${urlCategory}"]`);
+            if (matchBtn) {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                matchBtn.classList.add('active');
+            }
+        }
         loadGalleryFromAPI();
         setupFilterButtons();
     }
