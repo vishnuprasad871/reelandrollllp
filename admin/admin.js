@@ -11,13 +11,13 @@ let currentGallery = [];
  * Check authentication on dashboard load
  */
 async function checkAuth() {
-    if (window.location.pathname.includes('dashboard.html')) {
+    if (window.location.pathname.includes('/admin/dashboard')) {
         try {
             const response = await fetch(`${API_BASE}/auth.php`);
             const data = await response.json();
 
             if (!data.authenticated) {
-                window.location.href = 'index.html';
+                window.location.href = '/admin';
                 return;
             }
 
@@ -28,7 +28,7 @@ async function checkAuth() {
             loadGallery();
         } catch (error) {
             console.error('Auth check failed:', error);
-            window.location.href = 'index.html';
+            window.location.href = '/admin';
         }
     }
 }
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         logoutBtn.addEventListener('click', async () => {
             try {
                 await fetch(`${API_BASE}/logout.php`, { method: 'POST' });
-                window.location.href = 'index.html';
+                window.location.href = '/admin';
             } catch (error) {
                 console.error('Logout failed:', error);
             }
