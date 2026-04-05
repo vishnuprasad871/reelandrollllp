@@ -1,57 +1,111 @@
+# ============================================================
+#  Reel and Roll Photography — Apache Configuration
+#  Required modules: mod_rewrite, mod_headers, mod_deflate,
+#                    mod_expires, mod_php
+# ============================================================
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
 
-    # Force HTTPS in production (uncomment when deploying)
+    # ── HTTPS redirect (uncomment on live server) ──────────
     # RewriteCond %{HTTPS} off
     # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-    # API Routes
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^api/(.*)$ api/$1.php [L,QSA]
+    # ── Never rewrite real files, directories, or uploads ──
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # ── Skip rewriting for static assets ───────────────────
+    RewriteRule ^(assets|uploads|admin)/ - [L]
+
+    # ── Skip rewriting for API directory ───────────────────
+    RewriteRule ^api/ - [L]
+
+    # ── Remove .php extension from URLs ────────────────────
+    # /about  →  /about.php
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^([^.]+)/?$ $1.php [L,QSA]
+
+    # ── Remove .html extension from URLs (optional) ────────
+    # /about  →  /about.html  (only if .php not found first)
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^([^.]+)/?$ $1.html [L,QSA]
 </IfModule>
 
-# Security Headers
+# ── Security Headers ────────────────────────────────────────
 <IfModule mod_headers.c>
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "SAMEORIGIN"
-    Header set X-XSS-Protection "1; mode=block"
-    Header set Referrer-Policy "no-referrer-when-downgrade"
-    
-    # CORS Headers for API
-    Header set Access-Control-Allow-Origin "*"
-    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
-    Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "no-referrer-when-downgrade"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+    # CORS — API endpoints only
+    <FilesMatch "^api/">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+        Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+    </FilesMatch>
 </IfModule>
 
-# Protect sensitive files
-<FilesMatch "\.(env|sql|md|gitignore|dockerignore)$">
-    Order allow,deny
-    Deny from all
+# ── Block direct access to sensitive files ──────────────────
+<FilesMatch "\.(env|sql|md|log|gitignore|dockerignore|json)$">
+    Require all denied
 </FilesMatch>
 
-# PHP settings
+# Allow composer/package json if needed by app (remove if not)
+<Files "package.json">
+    Require all denied
+</Files>
+
+# Protect config directory
+<IfModule mod_authz_core.c>
+    <DirectoryMatch "^.*/api/config/">
+        Require all denied
+    </DirectoryMatch>
+</IfModule>
+
+# ── PHP Settings ────────────────────────────────────────────
 <IfModule mod_php.c>
     php_value upload_max_filesize 10M
-    php_value post_max_size 10M
+    php_value post_max_size 12M
     php_value max_execution_time 300
     php_value max_input_time 300
+    php_flag display_errors Off
+    php_flag log_errors On
 </IfModule>
 
-# Compression
+# ── Gzip Compression ────────────────────────────────────────
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml
+    AddOutputFilterByType DEFLATE text/css text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 
-# Browser Caching
+# ── Browser Caching ─────────────────────────────────────────
 <IfModule mod_expires.c>
     ExpiresActive On
-    ExpiresByType image/jpg "access plus 1 year"
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/gif "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
+
+    # Images — 1 year
+    ExpiresByType image/jpeg   "access plus 1 year"
+    ExpiresByType image/png    "access plus 1 year"
+    ExpiresByType image/gif    "access plus 1 year"
+    ExpiresByType image/webp   "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # CSS & JS — 1 month
+    ExpiresByType text/css                "access plus 1 month"
+    ExpiresByType application/javascript  "access plus 1 month"
+
+    # Fonts — 1 year
+    ExpiresByType font/woff   "access plus 1 year"
+    ExpiresByType font/woff2  "access plus 1 year"
+
+    # HTML & PHP — no cache
+    ExpiresByType text/html        "access plus 0 seconds"
+    ExpiresByType application/json "access plus 0 seconds"
 </IfModule>
