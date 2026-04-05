@@ -11,7 +11,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Reel &amp; Roll</h3>
+                    <a href="/"><img src="/assets/Logo.png" alt="Reel &amp; Roll Photography" style="height:50px;width:auto;margin-bottom:0.5rem;display:block;"></a>
                     <p>Capturing life's most precious moments with passion, creativity, and professional excellence since 2024.</p>
                     <div class="social-links">
                         <a href="#" class="social-link" aria-label="Instagram">📷</a>
