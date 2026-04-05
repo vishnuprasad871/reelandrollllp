@@ -6,6 +6,10 @@
     # RewriteCond %{HTTPS} off
     # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+    # --- Redirect .html pages to .php equivalents ---
+    RewriteCond %{THE_REQUEST} \s/([^?]*?)\.html[\s?] [NC]
+    RewriteRule ^ /%1.php [R=301,L]
+
     # --- Never rewrite real files or directories ---
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
