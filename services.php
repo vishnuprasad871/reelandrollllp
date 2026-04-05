@@ -116,7 +116,7 @@ require_once 'includes/header.php';
                     <a href="/contact" class="btn btn-primary" style="margin-top:2rem;"><span>Get A Quote</span></a>
                 </div>
                 <div class="reveal">
-                    <img src="assets/portfolio_portrait_1770402268053.png" alt="Corporate Photography"
+                    <img src="assets/corporate.jpg" alt="Corporate Photography"
                         style="width:100%;border-radius:16px;border:3px solid var(--color-primary);box-shadow:var(--shadow-primary);">
                 </div>
             </div>
