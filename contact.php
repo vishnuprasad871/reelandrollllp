@@ -57,8 +57,16 @@ require_once 'includes/header.php';
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="date">Preferred Date</label>
-                        <input type="date" id="date" name="date">
+                        <label for="timeline">Preferred Timeline</label>
+                        <select id="timeline" name="timeline">
+                            <option value="">Select a timeline</option>
+                            <option value="immediately">Immediately</option>
+                            <option value="1_month">Within 1 Month</option>
+                            <option value="2_months">Within 2 Months</option>
+                            <option value="3_months">Within 3 Months</option>
+                            <option value="6_months">Within 6 Months</option>
+                            <option value="flexible">Flexible / Not Sure Yet</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="message">Your Message *</label>
@@ -139,9 +147,44 @@ require_once 'includes/header.php';
 
 <?php require_once 'includes/footer.php'; ?>
 
-<!-- Contact form AJAX handler -->
+<!-- Contact form AJAX handler + auto-fill -->
 <script>
 (function () {
+    // Auto-fill service and message from URL params
+    const params = new URLSearchParams(window.location.search);
+    const serviceParam = params.get('service');
+    const fromParam   = params.get('from');
+
+    const serviceMessages = {
+        wedding:    'Hi, I\'m interested in Wedding Photography. I\'d love to discuss my wedding date, venue, and packages available.',
+        portrait:   'Hi, I\'m interested in a Portrait Session. Please let me know about your availability and pricing.',
+        event:      'Hi, I\'m interested in Event Coverage. I have an upcoming event I\'d like to discuss with you.',
+        landscape:  'Hi, I\'m interested in Landscape Photography. I\'d love to learn more about your fine-art prints and commissions.',
+        commercial: 'Hi, I\'m interested in Commercial Photography for my brand. I\'d like to discuss a photoshoot project.',
+        corporate:  'Hi, I\'m interested in Corporate Photography — headshots, team photos, or office imagery. Please get in touch.',
+        sports:     'Hi, I\'m interested in Sports Photography. I\'d like to discuss coverage for an upcoming sporting event or session.',
+        editing:    'Hi, I\'m interested in your Photo Editing services. Please share details about your retouching packages.',
+        videography:'Hi, I\'m interested in Videography services. I\'d love to discuss my project and your video packages.',
+    };
+
+    const key = serviceParam || fromParam;
+    if (key) {
+        const serviceSelect = document.getElementById('service');
+        const messageField  = document.getElementById('message');
+
+        // Pre-select the service dropdown
+        if (serviceSelect && serviceMessages[key]) {
+            for (const opt of serviceSelect.options) {
+                if (opt.value === key) { opt.selected = true; break; }
+            }
+        }
+
+        // Pre-fill message (editable)
+        if (messageField && serviceMessages[key]) {
+            messageField.value = serviceMessages[key];
+        }
+    }
+
     const form = document.getElementById('contactForm');
     if (!form) return;
     const btn = form.querySelector('.btn-submit');
