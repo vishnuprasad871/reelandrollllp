@@ -17,8 +17,8 @@ DirectoryIndex index.php index.html
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
-    # --- Skip static asset folders ---
-    RewriteRule ^(assets|uploads|admin|database|includes)/ - [L]
+    # --- Skip static asset folders (but NOT admin — handled below) ---
+    RewriteRule ^(assets|uploads|database|includes)/ - [L]
 
     # --- API Routes (pass as-is, PHP handled by server) ---
     RewriteRule ^api/ - [L]
@@ -30,6 +30,13 @@ DirectoryIndex index.php index.html
     # --- Fallback: /about -> /about.html (for old HTML pages) ---
     RewriteCond %{REQUEST_FILENAME}.html -f
     RewriteRule ^([^/.]+)/?$ $1.html [L,QSA]
+
+    # --- Clean URLs inside /admin: /admin/dashboard -> /admin/dashboard.html ---
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(admin/[^/.]+)/?$ $1.php [L,QSA]
+
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(admin/[^/.]+)/?$ $1.html [L,QSA]
 </IfModule>
 
 # Security Headers
