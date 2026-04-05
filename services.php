@@ -10,7 +10,7 @@ require_once 'includes/header.php';
         <div class="container">
             <h1 class="fade-in-up">Photography <span class="text-gradient">Services</span></h1>
             <div class="page-breadcrumb fade-in-up">
-                <a href="index.php">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <span>Photography</span>
             </div>
@@ -42,7 +42,7 @@ require_once 'includes/header.php';
                     <p class="section-subtitle">Premium Experience</p>
                     <h2>Wedding Photography</h2>
                     <p>Your wedding is not just an event; it's the beginning of your legacy. We capture the grand scale and the intimate whispers with equal artistry.</p>
-                    <a href="contact.php" class="btn btn-primary" style="margin-top:2rem;"><span>Get A Quote</span></a>
+                    <a href="/contact" class="btn btn-primary" style="margin-top:2rem;"><span>Get A Quote</span></a>
                 </div>
             </div>
 
@@ -53,7 +53,7 @@ require_once 'includes/header.php';
                     <p class="section-subtitle">Character &amp; Style</p>
                     <h2>Portrait Photography</h2>
                     <p>Elevate your personal brand or capture your family's essence. We create character-driven portraits that command attention.</p>
-                    <a href="contact.php" class="btn btn-primary" style="margin-top:2rem;"><span>Get A Quote</span></a>
+                    <a href="/contact" class="btn btn-primary" style="margin-top:2rem;"><span>Get A Quote</span></a>
                 </div>
                 <div class="reveal">
                     <img src="assets/portfolio_portrait_1770402268053.png" alt="Portrait Photography"
@@ -72,7 +72,7 @@ require_once 'includes/header.php';
                     <p class="section-subtitle">Dynamic &amp; Candid</p>
                     <h2>Event Coverage</h2>
                     <p>From high-profile corporate galas to exclusive private celebrations, we capture the electricity, scale, and candid moments that define your event.</p>
-                    <a href="contact.php" class="btn btn-primary" style="margin-top:2rem;"><span>Get A Quote</span></a>
+                    <a href="/contact" class="btn btn-primary" style="margin-top:2rem;"><span>Get A Quote</span></a>
                 </div>
             </div>
 
@@ -83,7 +83,7 @@ require_once 'includes/header.php';
                     <p class="section-subtitle">Nature &amp; Fine Art</p>
                     <h2>Landscape Photography</h2>
                     <p>Breathtaking fine-art prints of the world's most spectacular landscapes, from the dunes of the Dubai desert to global natural wonders.</p>
-                    <a href="contact.php" class="btn btn-primary" style="margin-top:2rem;"><span>Inquire Now</span></a>
+                    <a href="/contact" class="btn btn-primary" style="margin-top:2rem;"><span>Inquire Now</span></a>
                 </div>
                 <div class="reveal">
                     <img src="assets/landscape.jpg" alt="Landscape Photography"
@@ -102,7 +102,7 @@ require_once 'includes/header.php';
                     <p class="section-subtitle">Action &amp; Energy</p>
                     <h2>Sports Photography</h2>
                     <p>Capturing the raw emotion and peak performance of athletes. High-speed, split-second photography for professional events and individual athletes.</p>
-                    <a href="contact.php" class="btn btn-primary" style="margin-top:2rem;"><span>Get in Touch</span></a>
+                    <a href="/contact" class="btn btn-primary" style="margin-top:2rem;"><span>Get in Touch</span></a>
                 </div>
             </div>
 
@@ -113,7 +113,7 @@ require_once 'includes/header.php';
                     <p class="section-subtitle">Professional Excellence</p>
                     <h2>Corporate Photography</h2>
                     <p>Elevate your brand with powerful corporate imagery — from executive headshots and team photography to office environments and product shoots.</p>
-                    <a href="contact.php" class="btn btn-primary" style="margin-top:2rem;"><span>Get A Quote</span></a>
+                    <a href="/contact" class="btn btn-primary" style="margin-top:2rem;"><span>Get A Quote</span></a>
                 </div>
                 <div class="reveal">
                     <img src="assets/portfolio_portrait_1770402268053.png" alt="Corporate Photography"
@@ -129,7 +129,7 @@ require_once 'includes/header.php';
         <div class="container reveal">
             <h2>Ready to Book Your <span class="text-gradient">Session</span>?</h2>
             <p>Let's discuss your project and create something extraordinary together.</p>
-            <a href="contact.php" class="btn btn-primary" style="margin-top:2rem;"><span>Start a Conversation</span></a>
+            <a href="/contact" class="btn btn-primary" style="margin-top:2rem;"><span>Start a Conversation</span></a>
         </div>
     </section>
 

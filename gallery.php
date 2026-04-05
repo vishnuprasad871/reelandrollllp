@@ -67,7 +67,7 @@ if (!in_array($activeCategory, $allowedCategories)) $activeCategory = 'all';
         <div class="container reveal">
             <h2>Love What You <span class="text-gradient">See</span>?</h2>
             <p>Let's create stunning photography for your special moments</p>
-            <a href="contact.php" class="btn btn-primary" style="margin-top: 2rem;"><span>Contact Us</span></a>
+            <a href="/contact" class="btn btn-primary" style="margin-top: 2rem;"><span>Contact Us</span></a>
         </div>
     </section>
 

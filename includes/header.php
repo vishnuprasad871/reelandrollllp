@@ -46,46 +46,46 @@ function navCTA(string $active): string {
 <nav class="<?= $navClass ?>" id="navbar">
     <div class="container nav-container">
         <ul class="nav-links-left" id="navLinksLeft">
-            <li><a href="index.php"<?= navActive('home', $activeNav) ?>>Home</a></li>
-            <li><a href="about.php"<?= navActive('about', $activeNav) ?>>About</a></li>
+            <li><a href="/"<?= navActive('home', $activeNav) ?>>Home</a></li>
+            <li><a href="/about"<?= navActive('about', $activeNav) ?>>About</a></li>
             <li class="has-dropdown">
-                <a href="services.php"<?= navActive('photography', $activeNav) ?>>Photography</a>
+                <a href="/services"<?= navActive('photography', $activeNav) ?>>Photography</a>
                 <ul class="dropdown">
-                    <li><a href="services.php#wedding">Wedding</a></li>
-                    <li><a href="services.php#portrait">Portrait</a></li>
-                    <li><a href="services.php#event">Event Coverage</a></li>
-                    <li><a href="services.php#landscape">Landscape &amp; Sports</a></li>
-                    <li><a href="services.php#corporate">Corporate</a></li>
+                    <li><a href="/services#wedding">Wedding</a></li>
+                    <li><a href="/services#portrait">Portrait</a></li>
+                    <li><a href="/services#event">Event Coverage</a></li>
+                    <li><a href="/services#landscape">Landscape &amp; Sports</a></li>
+                    <li><a href="/services#corporate">Corporate</a></li>
                 </ul>
             </li>
             <li class="has-dropdown">
-                <a href="video-gallery.php"<?= navActive('videography', $activeNav) ?>>Videography</a>
+                <a href="/video-gallery"<?= navActive('videography', $activeNav) ?>>Videography</a>
                 <ul class="dropdown">
-                    <li><a href="video-gallery.php#weddings">Wedding Films</a></li>
-                    <li><a href="video-gallery.php#events">Event Coverage</a></li>
-                    <li><a href="video-gallery.php#corporate">Corporate Films</a></li>
-                    <li><a href="video-gallery.php#commercial">Commercial</a></li>
+                    <li><a href="/video-gallery#weddings">Wedding Films</a></li>
+                    <li><a href="/video-gallery#events">Event Coverage</a></li>
+                    <li><a href="/video-gallery#corporate">Corporate Films</a></li>
+                    <li><a href="/video-gallery#commercial">Commercial</a></li>
                 </ul>
             </li>
         </ul>
 
-        <a href="index.php" class="logo">
+        <a href="/" class="logo">
             <img src="assets/Logo.png" alt="Reel &amp; Roll Photography">
         </a>
 
         <ul class="nav-links-right" id="navLinksRight">
-            <li><a href="portfolio.php"<?= navActive('portfolio', $activeNav) ?>>Portfolio</a></li>
+            <li><a href="/portfolio"<?= navActive('portfolio', $activeNav) ?>>Portfolio</a></li>
             <li class="has-dropdown">
-                <a href="gallery.php"<?= navActive('gallery', $activeNav) ?>>Gallery</a>
+                <a href="/gallery"<?= navActive('gallery', $activeNav) ?>>Gallery</a>
                 <ul class="dropdown">
-                    <li><a href="gallery.php?category=wedding">Wedding</a></li>
-                    <li><a href="gallery.php?category=portrait">Portrait</a></li>
-                    <li><a href="gallery.php?category=event">Event</a></li>
-                    <li><a href="gallery.php?category=landscape">Landscape</a></li>
-                    <li><a href="gallery.php?category=sports">Sports</a></li>
+                    <li><a href="/gallery?category=wedding">Wedding</a></li>
+                    <li><a href="/gallery?category=portrait">Portrait</a></li>
+                    <li><a href="/gallery?category=event">Event</a></li>
+                    <li><a href="/gallery?category=landscape">Landscape</a></li>
+                    <li><a href="/gallery?category=sports">Sports</a></li>
                 </ul>
             </li>
-            <li><a href="contact.php" class="<?= navCTA($activeNav) ?>">Book Now</a></li>
+            <li><a href="/contact" class="<?= navCTA($activeNav) ?>">Book Now</a></li>
         </ul>
 
         <button class="menu-toggle" id="menuToggle" aria-label="Open menu">

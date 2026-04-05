@@ -24,13 +24,13 @@
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="about.php">About Us</a></li>
-                        <li><a href="services.php">Photography</a></li>
-                        <li><a href="portfolio.php">Portfolio</a></li>
-                        <li><a href="gallery.php">Gallery</a></li>
-                        <li><a href="video-gallery.php">Videography</a></li>
-                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/services">Photography</a></li>
+                        <li><a href="/portfolio">Portfolio</a></li>
+                        <li><a href="/gallery">Gallery</a></li>
+                        <li><a href="/video-gallery">Videography</a></li>
+                        <li><a href="/contact">Contact</a></li>
                     </ul>
                 </div>
 
@@ -47,7 +47,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; <?= date('Y') ?> <a href="index.php">Reel and Roll Photography</a>. All rights reserved.</p>
+                <p>&copy; <?= date('Y') ?> <a href="/">Reel and Roll Photography</a>. All rights reserved.</p>
             </div>
         </div>
     </footer>

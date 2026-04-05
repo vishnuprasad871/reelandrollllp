@@ -11,7 +11,7 @@ require_once 'includes/header.php';
             <h1 class="fade-in-up">Our Creative <span class="text-gradient">Process</span></h1>
             <p class="page-subtitle fade-in-up">A seamless journey from vision to reality</p>
             <div class="page-breadcrumb fade-in-up">
-                <a href="index.php">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <span>How We Work</span>
             </div>
@@ -123,7 +123,7 @@ require_once 'includes/header.php';
                         <li><strong>Extended Editing:</strong> 500-1000+ edited images delivered</li>
                         <li><strong>Album &amp; Prints:</strong> Optional custom album and print packages</li>
                     </ul>
-                    <a href="services.php#wedding" class="link-arrow">Learn More →</a>
+                    <a href="/services#wedding" class="link-arrow">Learn More →</a>
                 </div>
                 <div class="service-process-card reveal">
                     <div class="process-icon">🎉</div>
@@ -136,7 +136,7 @@ require_once 'includes/header.php';
                         <li><strong>Fast Turnaround:</strong> 3-5 day delivery option available</li>
                         <li><strong>Highlight Reel:</strong> Video compilation of key moments (optional)</li>
                     </ul>
-                    <a href="services.php#event" class="link-arrow">Learn More →</a>
+                    <a href="/services#event" class="link-arrow">Learn More →</a>
                 </div>
                 <div class="service-process-card reveal">
                     <div class="process-icon">👤</div>
@@ -149,7 +149,7 @@ require_once 'includes/header.php';
                         <li><strong>Full Retouching:</strong> 20-50 masterpiece-ready images</li>
                         <li><strong>Print &amp; Digital:</strong> High-res files plus optional prints</li>
                     </ul>
-                    <a href="services.php#portrait" class="link-arrow">Learn More →</a>
+                    <a href="/services#portrait" class="link-arrow">Learn More →</a>
                 </div>
                 <div class="service-process-card reveal">
                     <div class="process-icon">🏢</div>
@@ -162,7 +162,7 @@ require_once 'includes/header.php';
                         <li><strong>Extensive Retouching:</strong> Professional color correction</li>
                         <li><strong>Usage Rights:</strong> Commercial licensing and deliverables</li>
                     </ul>
-                    <a href="services.php#corporate" class="link-arrow">Learn More →</a>
+                    <a href="/services#corporate" class="link-arrow">Learn More →</a>
                 </div>
             </div>
         </div>
@@ -211,8 +211,8 @@ require_once 'includes/header.php';
                 <h2>Ready to Start Your <span class="text-gradient">Journey</span> With Us?</h2>
                 <p>Let's discuss your vision and create something extraordinary together</p>
                 <div class="cta-buttons">
-                    <a href="contact.php" class="btn btn-primary"><span>Book a Consultation</span></a>
-                    <a href="services.php" class="btn btn-secondary"><span>Explore Services</span></a>
+                    <a href="/contact" class="btn btn-primary"><span>Book a Consultation</span></a>
+                    <a href="/services" class="btn btn-secondary"><span>Explore Services</span></a>
                 </div>
             </div>
         </div>

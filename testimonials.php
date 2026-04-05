@@ -11,7 +11,7 @@ require_once 'includes/header.php';
             <h1 class="fade-in-up">Client <span class="text-gradient">Stories</span></h1>
             <p class="page-subtitle fade-in-up">Real testimonials from clients who trusted us with their most precious moments</p>
             <div class="page-breadcrumb fade-in-up">
-                <a href="index.php">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <span>Testimonials</span>
             </div>
@@ -92,8 +92,8 @@ require_once 'includes/header.php';
                 <h2>Ready to Create Your <span class="text-gradient">Success Story</span>?</h2>
                 <p>Join hundreds of satisfied clients who've trusted us with their most important moments</p>
                 <div class="cta-buttons">
-                    <a href="contact.php" class="btn btn-primary"><span>Schedule Your Session</span></a>
-                    <a href="portfolio.php" class="btn btn-secondary"><span>View Our Portfolio</span></a>
+                    <a href="/contact" class="btn btn-primary"><span>Schedule Your Session</span></a>
+                    <a href="/portfolio" class="btn btn-secondary"><span>View Our Portfolio</span></a>
                 </div>
             </div>
         </div>

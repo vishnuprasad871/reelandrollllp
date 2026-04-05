@@ -21,8 +21,8 @@ require_once 'includes/header.php';
                 visual legacies. The standard of excellence in Dubai since 2024.
             </p>
             <div class="cta-buttons fade-in-up">
-                <a href="contact.php" class="btn btn-primary"><span>Secure Your Date</span></a>
-                <a href="portfolio.php" class="btn btn-secondary"><span>Explore Artistry</span></a>
+                <a href="/contact" class="btn btn-primary"><span>Secure Your Date</span></a>
+                <a href="/portfolio" class="btn btn-secondary"><span>Explore Artistry</span></a>
             </div>
         </div>
     </section>
@@ -178,7 +178,7 @@ require_once 'includes/header.php';
             <p class="section-subtitle" style="color: var(--color-primary);">Limited Availability</p>
             <h2 style="font-size: 3rem;">Ready to Secure Your <span class="text-gradient">Legacy</span>?</h2>
             <p style="font-size: 1.2rem; margin-top: 1rem;">We are currently booking for Q3 &amp; Q4 2026. Contact us today to check availability for your date.</p>
-            <a href="contact.php" class="btn btn-primary" style="margin-top: 2rem; padding: 1.5rem 3rem;"><span>Check My Date</span></a>
+            <a href="/contact" class="btn btn-primary" style="margin-top: 2rem; padding: 1.5rem 3rem;"><span>Check My Date</span></a>
         </div>
     </section>
 

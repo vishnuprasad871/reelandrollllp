@@ -20,7 +20,7 @@ $team = [
             <h1 class="fade-in-up">Our Creative <span class="text-gradient">Team</span></h1>
             <p class="page-subtitle fade-in-up">Award-winning photographers and creative professionals dedicated to excellence</p>
             <div class="page-breadcrumb fade-in-up">
-                <a href="index.php">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <span>Team</span>
             </div>
@@ -87,8 +87,8 @@ $team = [
                 <h2>Ready to Create <span class="text-gradient">Magic</span> Together?</h2>
                 <p>Get in touch with our team to discuss your project and vision</p>
                 <div class="cta-buttons">
-                    <a href="contact.php" class="btn btn-primary"><span>Schedule Consultation</span></a>
-                    <a href="portfolio.php" class="btn btn-secondary"><span>View Our Work</span></a>
+                    <a href="/contact" class="btn btn-primary"><span>Schedule Consultation</span></a>
+                    <a href="/portfolio" class="btn btn-secondary"><span>View Our Work</span></a>
                 </div>
             </div>
         </div>

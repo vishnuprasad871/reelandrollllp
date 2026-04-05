@@ -10,7 +10,7 @@ require_once 'includes/header.php';
         <div class="container">
             <h1 class="fade-in-up">About <span class="text-gradient">Us</span></h1>
             <div class="page-breadcrumb fade-in-up">
-                <a href="index.php">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <span>About</span>
             </div>
@@ -143,7 +143,7 @@ require_once 'includes/header.php';
         <div class="container reveal">
             <h2>Ready to Work With <span class="text-gradient">Us</span>?</h2>
             <p>Let's create something amazing together</p>
-            <a href="contact.php" class="btn btn-primary" style="margin-top: 2rem;"><span>Get In Touch</span></a>
+            <a href="/contact" class="btn btn-primary" style="margin-top: 2rem;"><span>Get In Touch</span></a>
         </div>
     </section>
 

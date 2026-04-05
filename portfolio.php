@@ -10,7 +10,7 @@ require_once 'includes/header.php';
         <div class="container">
             <h1 class="fade-in-up">Our <span class="text-gradient">Portfolio</span></h1>
             <div class="page-breadcrumb fade-in-up">
-                <a href="index.php">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <span>Portfolio</span>
             </div>
@@ -111,8 +111,8 @@ require_once 'includes/header.php';
             <h2>Want to See More <span class="text-gradient">Work</span>?</h2>
             <p>Visit our full gallery or contact us to discuss your photography needs</p>
             <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
-                <a href="gallery.php" class="btn btn-primary"><span>View Full Gallery</span></a>
-                <a href="contact.php" class="btn btn-secondary"><span>Contact Us</span></a>
+                <a href="/gallery" class="btn btn-primary"><span>View Full Gallery</span></a>
+                <a href="/contact" class="btn btn-secondary"><span>Contact Us</span></a>
             </div>
         </div>
     </section>

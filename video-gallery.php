@@ -11,7 +11,7 @@ require_once 'includes/header.php';
             <h1 class="fade-in-up">Video <span class="text-gradient">Gallery</span></h1>
             <p class="page-subtitle fade-in-up">Cinematic storytelling capturing the essence of your moments</p>
             <div class="page-breadcrumb fade-in-up">
-                <a href="index.php">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <span>Video Gallery</span>
             </div>

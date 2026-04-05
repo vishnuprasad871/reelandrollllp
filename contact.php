@@ -10,7 +10,7 @@ require_once 'includes/header.php';
         <div class="container">
             <h1 class="fade-in-up">Get In <span class="text-gradient">Touch</span></h1>
             <div class="page-breadcrumb fade-in-up">
-                <a href="index.php">Home</a>
+                <a href="/">Home</a>
                 <span>/</span>
                 <span>Contact</span>
             </div>
