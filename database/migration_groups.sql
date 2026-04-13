@@ -14,8 +14,10 @@ CREATE TABLE IF NOT EXISTS gallery_groups (
     INDEX idx_sort_order (sort_order)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 2. Add group_id to gallery table (ignore error if column already exists)
-ALTER TABLE gallery
-    ADD COLUMN group_id  INT NULL DEFAULT NULL AFTER category,
-    ADD COLUMN sort_order INT DEFAULT 0         AFTER group_id,
-    ADD INDEX idx_group_id (group_id);
+-- 2. Add group_id and sort_order to gallery (safe to re-run via IGNORE)
+ALTER IGNORE TABLE gallery
+    ADD COLUMN group_id   INT NULL DEFAULT NULL AFTER category,
+    ADD COLUMN sort_order INT DEFAULT 0         AFTER group_id;
+
+-- 3. Add index if not already present
+ALTER IGNORE TABLE gallery ADD INDEX idx_group_id (group_id);
