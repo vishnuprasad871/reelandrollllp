@@ -4,61 +4,70 @@ $pageDescription = 'Browse our complete photography gallery — weddings, portra
 $activeNav       = 'gallery';
 require_once 'includes/header.php';
 
-// Read ?category= from URL and sanitise
+// Sanitise URL params
 $allowedCategories = ['all', 'wedding', 'portrait', 'event', 'landscape', 'sports'];
 $activeCategory    = $_GET['category'] ?? 'all';
 if (!in_array($activeCategory, $allowedCategories)) $activeCategory = 'all';
+
+$urlGroup = isset($_GET['group']) ? (int)$_GET['group'] : null;
+
+// Determine initial view: category param → flat list, group param or nothing → groups view
+$startInImagesView = ($activeCategory !== 'all') || ($urlGroup !== null);
 ?>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="fade-in-up">Photo <span class="text-gradient">Gallery</span></h1>
+            <div class="page-breadcrumb fade-in-up">
+                <a href="/">Home</a>
+                <span>/</span>
+                <span>Gallery</span>
+            </div>
+        </div>
+    </section>
 
     <!-- Gallery Section -->
     <section class="gallery-container">
         <div class="container">
-            <div class="section-header reveal">
-                <p class="section-subtitle">Our Collection</p>
-                <h2>Complete <span class="text-gradient">Photography Gallery</span></h2>
-                <p>Browse through our extensive collection of photography work</p>
+
+            <!-- ── Groups Folder View (default) ─────────────────── -->
+            <div id="groupsView" <?= $startInImagesView ? 'style="display:none;"' : '' ?>>
+                <div class="section-header reveal" style="margin-bottom:2rem;">
+                    <p class="section-subtitle">Our Collection</p>
+                    <h2>Browse by <span class="text-gradient">Category</span></h2>
+                    <p>Select a group to explore photos</p>
+                </div>
+                <div id="groupsFolderGrid" class="groups-folder-grid reveal">
+                    <div style="grid-column:1/-1;text-align:center;padding:3rem;color:#888;">
+                        <div style="width:36px;height:36px;border:3px solid #ddd;border-top-color:#FF4D00;border-radius:50%;margin:0 auto 1rem;animation:spin .8s linear infinite;"></div>
+                        Loading groups…
+                    </div>
+                </div>
             </div>
 
-            <!-- Filter Buttons -->
-            <div class="gallery-filters reveal">
-                <?php foreach ($allowedCategories as $cat): ?>
-                <button class="filter-btn <?= $cat === $activeCategory ? 'active' : '' ?>"
-                        data-filter="<?= $cat ?>">
-                    <?= ucfirst($cat === 'all' ? 'All' : $cat) ?>
-                </button>
-                <?php endforeach; ?>
+            <!-- ── Images View (inside group or category filter) ── -->
+            <div id="imagesView" <?= $startInImagesView ? '' : 'style="display:none;"' ?>>
+                <!-- Nav bar -->
+                <div class="gallery-images-nav reveal">
+                    <button class="gallery-back-btn" onclick="showGroupsView()">← All Groups</button>
+                    <span id="currentGroupLabel" class="gallery-group-label"></span>
+                </div>
+
+                <!-- Category filter buttons (visible inside a group too) -->
+                <div class="gallery-filters reveal" id="categoryFilters">
+                    <?php foreach ($allowedCategories as $cat): ?>
+                    <button class="filter-btn <?= $cat === $activeCategory ? 'active' : '' ?>"
+                            data-filter="<?= $cat ?>">
+                        <?= $cat === 'all' ? 'All' : ucfirst($cat) ?>
+                    </button>
+                    <?php endforeach; ?>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="gallery-grid" id="galleryGrid"></div>
             </div>
 
-            <!-- Gallery Grid -->
-            <div class="gallery-grid" id="galleryGrid">
-                <div class="gallery-item reveal" data-category="wedding">
-                    <img src="assets/portfolio_wedding_1770402245749.png" alt="Wedding Photography" loading="lazy">
-                </div>
-                <div class="gallery-item reveal" data-category="portrait">
-                    <img src="assets/portfolio_portrait_1770402268053.png" alt="Portrait Photography" loading="lazy">
-                </div>
-                <div class="gallery-item reveal" data-category="portrait">
-                    <img src="assets/about_photographer_1770402230073.png" alt="Professional Portrait" loading="lazy">
-                </div>
-                <div class="gallery-item reveal" data-category="landscape">
-                    <img src="assets/portfolio_landscape_1770402286898.png" alt="Landscape Photography" loading="lazy">
-                </div>
-                <div class="gallery-item reveal" data-category="landscape">
-                    <img src="assets/hero_background_1770402213477.png" alt="Sunset Photography" loading="lazy">
-                </div>
-                <div class="gallery-item reveal" data-category="event">
-                    <img src="assets/portfolio_event_1770402304065.png" alt="Event Photography" loading="lazy">
-                </div>
-                <div class="gallery-item reveal" data-category="wedding">
-                    <img src="assets/portfolio_wedding_1770402245749.png" alt="Wedding Ceremony" loading="lazy">
-                </div>
-                <div class="gallery-item reveal" data-category="portrait">
-                    <img src="assets/portfolio_portrait_1770402268053.png" alt="Corporate Portrait" loading="lazy">
-                </div>
-                <div class="gallery-item reveal" data-category="landscape">
-                    <img src="assets/portfolio_landscape_1770402286898.png" alt="Nature Photography" loading="lazy">
-                </div>
-            </div>
         </div>
     </section>
 
@@ -67,13 +76,13 @@ if (!in_array($activeCategory, $allowedCategories)) $activeCategory = 'all';
         <div class="container reveal">
             <h2>Love What You <span class="text-gradient">See</span>?</h2>
             <p>Let's create stunning photography for your special moments</p>
-            <a href="/contact" class="btn btn-primary" style="margin-top: 2rem;"><span>Contact Us</span></a>
+            <a href="/contact" class="btn btn-primary" style="margin-top:2rem;"><span>Contact Us</span></a>
         </div>
     </section>
 
     <!-- Lightbox -->
     <div class="lightbox-modal" id="lightboxModal">
-        <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
         <div class="lightbox-content">
             <img id="lightboxImg" src="" alt="Full size image">
         </div>
@@ -83,13 +92,7 @@ if (!in_array($activeCategory, $allowedCategories)) $activeCategory = 'all';
 
 <script src="gallery-api.js"></script>
 <script>
-// Pre-activate filter from PHP-resolved category
-(function () {
-    const cat = <?= json_encode($activeCategory) ?>;
-    if (cat !== 'all') {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        const target = document.querySelector('[data-filter="' + cat + '"]');
-        if (target) target.classList.add('active');
-    }
-})();
+// Pass PHP-resolved state to JS
+const INIT_CATEGORY = <?= json_encode($activeCategory) ?>;
+const INIT_GROUP_ID = <?= json_encode($urlGroup) ?>;
 </script>

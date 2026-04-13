@@ -8,180 +8,214 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
-    <div class="dashboard-container">
-        <!-- Header -->
-        <header class="dashboard-header">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="../assets/Logo.png" alt="Reel & Roll">
-                    <h1>Gallery Manager</h1>
-                </div>
-                <div class="header-actions">
-                    <span id="userInfo" class="user-info"></span>
-                    <button id="logoutBtn" class="btn-logout">Logout</button>
-                </div>
+<div class="dashboard-container">
+
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="../assets/Logo.png" alt="Reel & Roll">
+                <h1>Gallery Manager</h1>
             </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="dashboard-main">
-            <div class="container">
-                <!-- Tab Navigation -->
-                <div class="admin-tabs" style="display:flex;gap:0;margin-bottom:2rem;border-bottom:2px solid #1e1e1e;">
-                    <button class="admin-tab active" data-tab="photoTab" onclick="switchTab('photoTab')">📷 Photo Gallery</button>
-                    <button class="admin-tab" data-tab="videoTab" onclick="switchTab('videoTab')">🎬 Video Gallery</button>
-                </div>
-
-                <!-- Photo Gallery Tab -->
-                <div id="photoTab" class="tab-panel">
-                    <!-- Upload Section -->
-                    <section class="upload-section">
-                        <h2>Upload New Image</h2>
-                        <form id="uploadForm" class="upload-form">
-                            <div class="upload-area" id="uploadArea">
-                                <input type="file" id="imageFile" name="image" accept="image/*" required>
-                                <div class="upload-placeholder">
-                                    <div class="upload-icon">📷</div>
-                                    <p>Click or drag image here to upload</p>
-                                    <small>Supported: JPG, PNG, GIF, WEBP (Max 5MB)</small>
-                                </div>
-                                <div id="imagePreview" class="image-preview" style="display: none;">
-                                    <img src="" alt="Preview">
-                                    <button type="button" class="btn-remove-preview">✕</button>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="category">Category</label>
-                                    <select id="category" name="category" required>
-                                        <option value="">Select Category</option>
-                                        <option value="wedding">Wedding</option>
-                                        <option value="portrait">Portrait</option>
-                                        <option value="event">Event</option>
-                                        <option value="landscape">Landscape</option>
-                                        <option value="sports">Sports</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="altText">Alt Text</label>
-                                    <input type="text" id="altText" name="alt_text"
-                                        placeholder="Description for accessibility">
-                                </div>
-                            </div>
-
-                            <div id="uploadMessage" class="message" style="display: none;"></div>
-
-                            <button type="submit" class="btn-primary">
-                                <span>Upload Image</span>
-                                <div class="loader" style="display: none;"></div>
-                            </button>
-                        </form>
-                    </section>
-
-                    <!-- Gallery Management Section -->
-                    <section class="gallery-management">
-                        <div class="section-header">
-                            <h2>Manage Gallery</h2>
-                            <div class="filter-tabs">
-                                <button class="filter-tab active" data-filter="all">All</button>
-                                <button class="filter-tab" data-filter="wedding">Wedding</button>
-                                <button class="filter-tab" data-filter="portrait">Portrait</button>
-                                <button class="filter-tab" data-filter="event">Event</button>
-                                <button class="filter-tab" data-filter="landscape">Landscape</button>
-                                <button class="filter-tab" data-filter="sports">Sports</button>
-                            </div>
-                        </div>
-
-                        <div id="galleryGrid" class="gallery-admin-grid">
-                            <div class="loader-container">
-                                <div class="loader"></div>
-                                <p>Loading gallery...</p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-                <!-- Video Gallery Tab -->
-                <div id="videoTab" class="tab-panel" style="display:none;">
-                    <section class="upload-section">
-                        <h2>Add YouTube Video</h2>
-                        <form id="videoForm" class="upload-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="youtubeUrl">YouTube URL *</label>
-                                    <input type="text" id="youtubeUrl" placeholder="https://youtube.com/watch?v=... or https://youtube.com/shorts/..." required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="videoCategory">Category *</label>
-                                    <select id="videoCategory" required>
-                                        <option value="">Select Category</option>
-                                        <option value="wedding">Wedding Films</option>
-                                        <option value="events">Events</option>
-                                        <option value="corporate">Corporate</option>
-                                        <option value="commercial">Commercial</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="videoTitle">Title *</label>
-                                    <input type="text" id="videoTitle" placeholder="e.g. Sarah & Ahmed Wedding Film" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="videoYear">Year</label>
-                                    <input type="number" id="videoYear" placeholder="2024" min="2000" max="2030" value="2024">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="videoDesc">Description (optional)</label>
-                                    <textarea id="videoDesc" rows="2" placeholder="Brief description of the video..."></textarea>
-                                </div>
-                                <div class="form-group" style="display:flex;align-items:center;gap:0.75rem;padding-top:1.8rem;">
-                                    <input type="checkbox" id="videoVertical" style="width:18px;height:18px;accent-color:#FF4D00;cursor:pointer;">
-                                    <label for="videoVertical" style="cursor:pointer;margin:0;">Vertical video (Shorts / Portrait)</label>
-                                </div>
-                            </div>
-                            <div id="videoMessage" class="message" style="display:none;"></div>
-                            <button type="submit" class="btn-primary"><span>Add Video</span></button>
-                        </form>
-                    </section>
-
-                    <section class="gallery-management" style="margin-top:2rem;">
-                        <div class="section-header">
-                            <h2>Manage Videos</h2>
-                            <div style="display:flex;gap:1rem;align-items:center;">
-                                <span id="videoCount" style="color:#888;font-size:0.9rem;"></span>
-                            </div>
-                        </div>
-                        <div id="videoAdminGrid" class="gallery-admin-grid" style="margin-top:1.5rem;">
-                            <p style="color:#888;padding:2rem 0;">No videos added yet.</p>
-                        </div>
-                    </section>
-                </div>
+            <div class="header-actions">
+                <span id="userInfo" class="user-info"></span>
+                <button id="logoutBtn" class="btn-logout">Logout</button>
             </div>
-        </main>
-    </div>
+        </div>
+    </header>
 
-    <!-- Edit Modal -->
-    <div id="editModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Edit Image</h3>
-                <button class="modal-close" onclick="closeEditModal()">✕</button>
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="container">
+
+            <!-- Tab Navigation -->
+            <div class="admin-tabs" style="display:flex;gap:0;margin-bottom:2rem;border-bottom:2px solid #e0e0e0;">
+                <button class="admin-tab active" data-tab="photoTab" onclick="switchTab('photoTab')">📷 Photo Gallery</button>
+                <button class="admin-tab" data-tab="videoTab" onclick="switchTab('videoTab')">🎬 Video Gallery</button>
             </div>
-            <form id="editForm">
-                <input type="hidden" id="editImageId">
+
+            <!-- ══════════════════════════════════════════ PHOTO TAB -->
+            <div id="photoTab" class="tab-panel">
+
+                <!-- ── Groups Section ────────────────────────────── -->
+                <section class="upload-section" style="margin-bottom:2rem;">
+                    <div class="section-header" style="margin-bottom:1.25rem;">
+                        <h2>📁 Groups</h2>
+                        <button class="btn-action" onclick="openGroupModal()">+ New Group</button>
+                    </div>
+                    <div id="groupsList" class="groups-grid">
+                        <div class="loader-container"><div class="loader"></div><p>Loading groups…</p></div>
+                    </div>
+                </section>
+
+                <!-- ── Upload Section ─────────────────────────────── -->
+                <section class="upload-section">
+                    <h2>Upload New Image</h2>
+                    <form id="uploadForm" class="upload-form">
+
+                        <div class="upload-area" id="uploadArea">
+                            <input type="file" id="imageFile" name="image" accept="image/*" required>
+                            <div class="upload-placeholder">
+                                <div class="upload-icon">📷</div>
+                                <p>Click or drag image here to upload</p>
+                                <small>Supported: JPG, PNG, GIF, WEBP (Max 5MB)</small>
+                            </div>
+                            <div id="imagePreview" class="image-preview" style="display:none;">
+                                <img src="" alt="Preview">
+                                <button type="button" class="btn-remove-preview">✕</button>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="category">Category *</label>
+                                <select id="category" name="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="wedding">Wedding</option>
+                                    <option value="portrait">Portrait</option>
+                                    <option value="event">Event</option>
+                                    <option value="landscape">Landscape</option>
+                                    <option value="sports">Sports</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="uploadGroup">Group</label>
+                                <select id="uploadGroup" name="group_id">
+                                    <option value="">No Group</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="altText">Alt Text</label>
+                                <input type="text" id="altText" name="alt_text" placeholder="Description for accessibility">
+                            </div>
+                            <div class="form-group">
+                                <label for="sortOrder">Sort Order</label>
+                                <input type="number" id="sortOrder" name="sort_order" value="0" min="0" placeholder="0">
+                            </div>
+                        </div>
+
+                        <div id="uploadMessage" class="message" style="display:none;"></div>
+                        <button type="submit" class="btn-primary">
+                            <span>Upload Image</span>
+                            <div class="loader" style="display:none;"></div>
+                        </button>
+                    </form>
+                </section>
+
+                <!-- ── Gallery Management ─────────────────────────── -->
+                <section class="gallery-management" style="margin-top:2rem;">
+                    <div class="section-header">
+                        <h2>Manage Photos</h2>
+                        <div class="filter-tabs">
+                            <button class="filter-tab active" data-filter="all">All</button>
+                            <button class="filter-tab" data-filter="wedding">Wedding</button>
+                            <button class="filter-tab" data-filter="portrait">Portrait</button>
+                            <button class="filter-tab" data-filter="event">Event</button>
+                            <button class="filter-tab" data-filter="landscape">Landscape</button>
+                            <button class="filter-tab" data-filter="sports">Sports</button>
+                        </div>
+                    </div>
+
+                    <!-- Bulk Action Bar -->
+                    <div id="bulkActionBar" class="bulk-action-bar" style="display:none;">
+                        <span id="selectedCount" class="bulk-count">0 selected</span>
+                        <div class="bulk-actions">
+                            <select id="bulkGroupSelect">
+                                <option value="">Unassign from group</option>
+                            </select>
+                            <button class="btn-action" onclick="bulkAssignGroup()">Assign to Group</button>
+                            <button class="btn-danger" onclick="bulkDelete()">🗑 Delete Selected</button>
+                            <button class="btn-secondary" style="flex:0;padding:0.5rem 1rem;" onclick="clearSelection()">Clear</button>
+                        </div>
+                    </div>
+
+                    <div id="galleryGrid" class="gallery-admin-grid" style="margin-top:1.5rem;">
+                        <div class="loader-container"><div class="loader"></div><p>Loading gallery…</p></div>
+                    </div>
+                </section>
+
+            </div><!-- /photoTab -->
+
+            <!-- ══════════════════════════════════════════ VIDEO TAB -->
+            <div id="videoTab" class="tab-panel" style="display:none;">
+                <section class="upload-section">
+                    <h2>Add YouTube Video</h2>
+                    <form id="videoForm" class="upload-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="youtubeUrl">YouTube URL *</label>
+                                <input type="text" id="youtubeUrl" placeholder="https://youtube.com/watch?v=... or https://youtube.com/shorts/..." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="videoCategory">Category *</label>
+                                <select id="videoCategory" required>
+                                    <option value="">Select Category</option>
+                                    <option value="wedding">Wedding Films</option>
+                                    <option value="events">Events</option>
+                                    <option value="corporate">Corporate</option>
+                                    <option value="commercial">Commercial</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="videoTitle">Title *</label>
+                                <input type="text" id="videoTitle" placeholder="e.g. Sarah & Ahmed Wedding Film" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="videoYear">Year</label>
+                                <input type="number" id="videoYear" placeholder="2024" min="2000" max="2030" value="2024">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="videoDesc">Description (optional)</label>
+                                <textarea id="videoDesc" rows="2" placeholder="Brief description of the video…"></textarea>
+                            </div>
+                            <div class="form-group" style="display:flex;align-items:center;gap:0.75rem;padding-top:1.8rem;">
+                                <input type="checkbox" id="videoVertical" style="width:18px;height:18px;accent-color:#FF4D00;cursor:pointer;">
+                                <label for="videoVertical" style="cursor:pointer;margin:0;">Vertical video (Shorts / Portrait)</label>
+                            </div>
+                        </div>
+                        <div id="videoMessage" class="message" style="display:none;"></div>
+                        <button type="submit" class="btn-primary"><span>Add Video</span></button>
+                    </form>
+                </section>
+
+                <section class="gallery-management" style="margin-top:2rem;">
+                    <div class="section-header">
+                        <h2>Manage Videos</h2>
+                        <span id="videoCount" style="color:#888;font-size:0.9rem;"></span>
+                    </div>
+                    <div id="videoAdminGrid" class="gallery-admin-grid" style="margin-top:1.5rem;">
+                        <p style="color:#888;padding:2rem 0;">No videos added yet.</p>
+                    </div>
+                </section>
+            </div><!-- /videoTab -->
+
+        </div>
+    </main>
+</div>
+
+<!-- ══ Edit Image Modal ════════════════════════════════════════════════════ -->
+<div id="editModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Edit Image</h3>
+            <button class="modal-close" onclick="closeEditModal()">✕</button>
+        </div>
+        <form id="editForm" style="padding:1.5rem;">
+            <input type="hidden" id="editImageId">
+            <div class="form-row">
                 <div class="form-group">
                     <label for="editCategory">Category</label>
                     <select id="editCategory" name="category" required>
@@ -193,27 +227,71 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="editGroup">Group</label>
+                    <select id="editGroup" name="group_id">
+                        <option value="">No Group</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
                     <label for="editAltText">Alt Text</label>
                     <input type="text" id="editAltText" name="alt_text">
                 </div>
-                <div class="modal-actions">
-                    <button type="button" class="btn-secondary" onclick="closeEditModal()">Cancel</button>
-                    <button type="submit" class="btn-primary">Save Changes</button>
+                <div class="form-group">
+                    <label for="editSortOrder">Sort Order</label>
+                    <input type="number" id="editSortOrder" name="sort_order" min="0" value="0">
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-secondary" onclick="closeEditModal()">Cancel</button>
+                <button type="submit" class="btn-primary">Save Changes</button>
+            </div>
+        </form>
     </div>
+</div>
 
-    <script src="admin.js"></script>
-    <script src="video-admin.js"></script>
-    <script>
-    function switchTab(tabId) {
-        document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
-        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-        document.getElementById(tabId).style.display = 'block';
-        document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
-    }
-    </script>
+<!-- ══ Group Modal ═════════════════════════════════════════════════════════ -->
+<div id="groupModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="groupModalTitle">New Group</h3>
+            <button class="modal-close" onclick="closeGroupModal()">✕</button>
+        </div>
+        <form id="groupForm" style="padding:1.5rem;">
+            <input type="hidden" id="groupId">
+            <div class="form-group">
+                <label for="groupTitle">Title *</label>
+                <input type="text" id="groupTitle" required placeholder="e.g. Beach Wedding 2024">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="groupSortOrder">Sort Order</label>
+                    <input type="number" id="groupSortOrder" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="groupCoverImage">Cover Image ID</label>
+                    <input type="number" id="groupCoverImage" min="1" placeholder="Image ID (optional)">
+                </div>
+            </div>
+            <div id="groupMessage" class="message" style="display:none;"></div>
+            <div class="modal-actions">
+                <button type="button" class="btn-secondary" onclick="closeGroupModal()">Cancel</button>
+                <button type="submit" class="btn-primary">Save Group</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="admin.js"></script>
+<script src="video-admin.js"></script>
+<script>
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(tabId).style.display = 'block';
+    document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+}
+</script>
 </body>
-
 </html>

@@ -1,0 +1,123 @@
+<?php
+/**
+ * GalleryGroup Model
+ * Handles gallery group CRUD operations
+ */
+
+require_once __DIR__ . '/../config/database.php';
+
+class GalleryGroup
+{
+    private $conn;
+    private $table = 'gallery_groups';
+
+    public $id;
+    public $title;
+    public $cover_image_id;
+    public $sort_order;
+
+    public function __construct()
+    {
+        $database = new Database();
+        $this->conn = $database->getConnection();
+    }
+
+    /**
+     * Get all groups with image count and cover image filename
+     */
+    public function getAll()
+    {
+        $query = "SELECT g.*,
+                         COUNT(gi.id) AS image_count,
+                         gi_cover.filename AS cover_filename
+                  FROM {$this->table} g
+                  LEFT JOIN gallery gi
+                         ON gi.group_id = g.id AND gi.is_active = 1
+                  LEFT JOIN gallery gi_cover
+                         ON gi_cover.id = g.cover_image_id
+                  GROUP BY g.id
+                  ORDER BY g.sort_order ASC, g.created_at ASC";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Get single group by ID
+     */
+    public function getById($id)
+    {
+        $query = "SELECT * FROM {$this->table} WHERE id = :id LIMIT 1";
+        $stmt  = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Create new group
+     */
+    public function create()
+    {
+        $query = "INSERT INTO {$this->table} (title, cover_image_id, sort_order)
+                  VALUES (:title, :cover_image_id, :sort_order)";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':title',          $this->title);
+        $stmt->bindParam(':cover_image_id', $this->cover_image_id, PDO::PARAM_INT);
+        $stmt->bindParam(':sort_order',     $this->sort_order,     PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            return $this->conn->lastInsertId();
+        }
+        return false;
+    }
+
+    /**
+     * Update group
+     */
+    public function update()
+    {
+        $query = "UPDATE {$this->table}
+                  SET title = :title,
+                      cover_image_id = :cover_image_id,
+                      sort_order = :sort_order
+                  WHERE id = :id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':title',          $this->title);
+        $stmt->bindParam(':cover_image_id', $this->cover_image_id, PDO::PARAM_INT);
+        $stmt->bindParam(':sort_order',     $this->sort_order,     PDO::PARAM_INT);
+        $stmt->bindParam(':id',             $this->id,             PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
+    /**
+     * Delete group (unassigns images first)
+     */
+    public function delete()
+    {
+        // Unassign all images from this group
+        $unassign = $this->conn->prepare("UPDATE gallery SET group_id = NULL WHERE group_id = :id");
+        $unassign->bindParam(':id', $this->id, PDO::PARAM_INT);
+        $unassign->execute();
+
+        $query = "DELETE FROM {$this->table} WHERE id = :id";
+        $stmt  = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $this->id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    /**
+     * Get the next sort_order value
+     */
+    public function getNextSortOrder()
+    {
+        $stmt = $this->conn->prepare("SELECT COALESCE(MAX(sort_order), 0) + 1 AS next_order FROM {$this->table}");
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return (int)$row['next_order'];
+    }
+}
