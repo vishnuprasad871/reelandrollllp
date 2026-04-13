@@ -62,7 +62,7 @@ function renderGroupFolders(groups) {
     if (!grid) return;
 
     grid.innerHTML = groups.map(g => `
-        <div class="group-folder reveal" onclick="openGroup(${g.id}, '${escJs(g.title)}')">
+        <div class="group-folder reveal active" onclick="openGroup(${g.id}, '${escJs(g.title)}')">
             <div class="group-folder-thumb">
                 ${g.cover_url
                     ? `<img src="${g.cover_url}" alt="${escHtml(g.title)}" loading="lazy">`
