@@ -39,9 +39,11 @@ async function loadGroupFolders() {
         const data = await res.json();
 
         if (!data.success || data.data.length === 0) {
-            // No groups defined — fall back to flat gallery
-            showImagesView('All Photos');
-            loadImages();
+            grid.innerHTML = `
+                <div style="grid-column:1/-1;text-align:center;padding:4rem;color:#888;">
+                    <div style="font-size:3rem;margin-bottom:1rem;">📁</div>
+                    <p style="font-size:1.1rem;">No photo groups yet.<br>Check back soon!</p>
+                </div>`;
             return;
         }
 

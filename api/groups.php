@@ -9,6 +9,13 @@ require_once __DIR__ . '/models/GalleryGroup.php';
 require_once __DIR__ . '/models/User.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
+$action = $_GET['action'] ?? '';
+
+// PATCH /api/groups.php?action=set_cover
+if ($method === 'PATCH' && $action === 'set_cover') {
+    setCover();
+    exit;
+}
 
 switch ($method) {
     case 'GET':    getGroups();    break;
@@ -84,6 +91,28 @@ function updateGroup()
         sendJsonResponse(['success' => true, 'message' => 'Group updated']);
     }
     sendErrorResponse('Failed to update group', 500);
+}
+
+function setCover()
+{
+    if (!User::isAuthenticated()) sendErrorResponse('Authentication required', 401);
+
+    $data = json_decode(file_get_contents('php://input'));
+    if (empty($data->group_id) || empty($data->image_id)) sendErrorResponse('group_id and image_id required', 400);
+
+    $group    = new GalleryGroup();
+    $existing = $group->getById((int)$data->group_id);
+    if (!$existing) sendErrorResponse('Group not found', 404);
+
+    $group->id             = (int)$data->group_id;
+    $group->title          = $existing['title'];
+    $group->cover_image_id = (int)$data->image_id;
+    $group->sort_order     = $existing['sort_order'];
+
+    if ($group->update()) {
+        sendJsonResponse(['success' => true, 'message' => 'Cover image set']);
+    }
+    sendErrorResponse('Failed to set cover', 500);
 }
 
 function deleteGroup()

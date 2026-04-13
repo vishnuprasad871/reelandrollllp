@@ -296,6 +296,7 @@ function renderGallery(items) {
                 <img src="${item.image_url}" alt="${escHtml(item.alt_text || 'Gallery image')}">
                 <div class="image-overlay">
                     <button class="btn-icon" onclick="editImage(${item.id})" title="Edit">✏️</button>
+                    <button class="btn-icon" onclick="setAsCover(${item.id}, ${item.group_id || 'null'})" title="Set as group cover">⭐</button>
                     <button class="btn-icon" onclick="deleteSingle(${item.id})" title="Delete">🗑️</button>
                 </div>
             </div>
@@ -419,6 +420,31 @@ function setupEditForm() {
             else alert('Update failed: ' + (data.error || ''));
         } catch (_) { alert('Network error'); }
     });
+}
+
+async function setAsCover(imageId, groupId) {
+    // If image is already in a group, use that; otherwise ask which group
+    let targetGroupId = groupId;
+
+    if (!targetGroupId) {
+        if (allGroups.length === 0) { alert('No groups exist yet. Create a group first.'); return; }
+        const options = allGroups.map(g => `${g.id}: ${g.title}`).join('\n');
+        const input   = prompt(`Enter the group ID to set this as cover:\n\n${options}`);
+        if (!input) return;
+        targetGroupId = parseInt(input);
+        if (!targetGroupId) { alert('Invalid group ID.'); return; }
+    }
+
+    try {
+        const res  = await fetch(`${API_BASE}/groups.php?action=set_cover`, {
+            method:  'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ group_id: targetGroupId, image_id: imageId })
+        });
+        const data = await res.json();
+        if (data.success) { await loadGroups(); alert('Cover image updated!'); }
+        else alert('Failed: ' + (data.error || ''));
+    } catch (_) { alert('Network error'); }
 }
 
 async function deleteSingle(id) {
