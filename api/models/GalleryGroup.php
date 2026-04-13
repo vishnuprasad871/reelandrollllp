@@ -42,7 +42,7 @@ class GalleryGroup
                              ON gi_first.id = (
                                  SELECT id FROM gallery
                                  WHERE group_id = g.id AND is_active = 1
-                                 ORDER BY sort_order ASC, created_at ASC
+                                 ORDER BY created_at ASC
                                  LIMIT 1
                              )
                       GROUP BY g.id
