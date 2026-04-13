@@ -28,31 +28,53 @@ class GalleryGroup
     public function getAll()
     {
         try {
-            // Use cover_image if set, otherwise fall back to the first image in the group
-            $query = "SELECT g.*,
-                             COUNT(gi.id) AS image_count,
-                             COALESCE(gi_cover.filename, gi_first.filename) AS cover_filename,
-                             COALESCE(gi_cover.id, gi_first.id) AS resolved_cover_id
-                      FROM {$this->table} g
-                      LEFT JOIN gallery gi
-                             ON gi.group_id = g.id AND gi.is_active = 1
-                      LEFT JOIN gallery gi_cover
-                             ON gi_cover.id = g.cover_image_id AND gi_cover.is_active = 1
-                      LEFT JOIN gallery gi_first
-                             ON gi_first.id = (
-                                 SELECT id FROM gallery
-                                 WHERE group_id = g.id AND is_active = 1
-                                 ORDER BY created_at ASC
-                                 LIMIT 1
-                             )
-                      GROUP BY g.id
-                      ORDER BY g.sort_order ASC, g.created_at ASC";
-
-            $stmt = $this->conn->prepare($query);
+            // 1. Fetch all groups
+            $stmt = $this->conn->prepare(
+                "SELECT * FROM {$this->table} ORDER BY sort_order ASC, created_at ASC"
+            );
             $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($groups as &$group) {
+                $gid = (int)$group['id'];
+
+                // 2. Image count (safe — group_id column may not exist yet)
+                try {
+                    $c = $this->conn->prepare(
+                        "SELECT COUNT(*) FROM gallery WHERE group_id = ? AND is_active = 1"
+                    );
+                    $c->execute([$gid]);
+                    $group['image_count'] = (int)$c->fetchColumn();
+                } catch (\Exception $e) {
+                    $group['image_count'] = 0;
+                }
+
+                // 3. Cover filename — explicit cover first, then first image in group
+                $group['cover_filename'] = null;
+
+                if (!empty($group['cover_image_id'])) {
+                    $cv = $this->conn->prepare(
+                        "SELECT filename FROM gallery WHERE id = ? AND is_active = 1 LIMIT 1"
+                    );
+                    $cv->execute([(int)$group['cover_image_id']]);
+                    $group['cover_filename'] = $cv->fetchColumn() ?: null;
+                }
+
+                if (!$group['cover_filename']) {
+                    try {
+                        $fi = $this->conn->prepare(
+                            "SELECT filename FROM gallery WHERE group_id = ? AND is_active = 1 ORDER BY created_at ASC LIMIT 1"
+                        );
+                        $fi->execute([$gid]);
+                        $group['cover_filename'] = $fi->fetchColumn() ?: null;
+                    } catch (\Exception $e) {
+                        // group_id column not yet present — no cover
+                    }
+                }
+            }
+
+            return $groups;
         } catch (\Exception $e) {
-            // Table may not exist yet — return empty array
             return [];
         }
     }
