@@ -4,15 +4,8 @@ $pageDescription = 'Browse our complete photography gallery — weddings, portra
 $activeNav       = 'gallery';
 require_once 'includes/header.php';
 
-// Sanitise URL params
-$allowedCategories = ['all', 'wedding', 'portrait', 'event', 'landscape', 'sports'];
-$activeCategory    = $_GET['category'] ?? 'all';
-if (!in_array($activeCategory, $allowedCategories)) $activeCategory = 'all';
-
 $urlGroup = isset($_GET['group']) ? (int)$_GET['group'] : null;
-
-// Determine initial view: category param → flat list, group param or nothing → groups view
-$startInImagesView = ($activeCategory !== 'all') || ($urlGroup !== null);
+$startInImagesView = ($urlGroup !== null);
 ?>
 
     <!-- Page Header -->
@@ -54,16 +47,6 @@ $startInImagesView = ($activeCategory !== 'all') || ($urlGroup !== null);
                     <span id="currentGroupLabel" class="gallery-group-label"></span>
                 </div>
 
-                <!-- Category filter buttons (visible inside a group too) -->
-                <div class="gallery-filters reveal" id="categoryFilters">
-                    <?php foreach ($allowedCategories as $cat): ?>
-                    <button class="filter-btn <?= $cat === $activeCategory ? 'active' : '' ?>"
-                            data-filter="<?= $cat ?>">
-                        <?= $cat === 'all' ? 'All' : ucfirst($cat) ?>
-                    </button>
-                    <?php endforeach; ?>
-                </div>
-
                 <!-- Gallery Grid -->
                 <div class="gallery-grid" id="galleryGrid"></div>
             </div>
@@ -92,7 +75,5 @@ $startInImagesView = ($activeCategory !== 'all') || ($urlGroup !== null);
 
 <script src="gallery-api.js"></script>
 <script>
-// Pass PHP-resolved state to JS
-const INIT_CATEGORY = <?= json_encode($activeCategory) ?>;
 const INIT_GROUP_ID = <?= json_encode($urlGroup) ?>;
 </script>

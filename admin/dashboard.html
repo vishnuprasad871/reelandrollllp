@@ -74,33 +74,20 @@
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="category">Category *</label>
-                                <select id="category" name="category" required>
-                                    <option value="">Select Category</option>
-                                    <option value="wedding">Wedding</option>
-                                    <option value="portrait">Portrait</option>
-                                    <option value="event">Event</option>
-                                    <option value="landscape">Landscape</option>
-                                    <option value="sports">Sports</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label for="uploadGroup">Group</label>
                                 <select id="uploadGroup" name="group_id">
                                     <option value="">No Group</option>
                                 </select>
                             </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="altText">Alt Text</label>
-                                <input type="text" id="altText" name="alt_text" placeholder="Description for accessibility">
-                            </div>
                             <div class="form-group">
                                 <label for="sortOrder">Sort Order</label>
                                 <input type="number" id="sortOrder" name="sort_order" value="0" min="0" placeholder="0">
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="altText">Alt Text</label>
+                            <input type="text" id="altText" name="alt_text" placeholder="Description for accessibility">
                         </div>
 
                         <div id="uploadMessage" class="message" style="display:none;"></div>
@@ -115,14 +102,6 @@
                 <section class="gallery-management" style="margin-top:2rem;">
                     <div class="section-header">
                         <h2>Manage Photos</h2>
-                        <div class="filter-tabs">
-                            <button class="filter-tab active" data-filter="all">All</button>
-                            <button class="filter-tab" data-filter="wedding">Wedding</button>
-                            <button class="filter-tab" data-filter="portrait">Portrait</button>
-                            <button class="filter-tab" data-filter="event">Event</button>
-                            <button class="filter-tab" data-filter="landscape">Landscape</button>
-                            <button class="filter-tab" data-filter="sports">Sports</button>
-                        </div>
                     </div>
 
                     <!-- Bulk Action Bar -->
@@ -217,31 +196,19 @@
             <input type="hidden" id="editImageId">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="editCategory">Category</label>
-                    <select id="editCategory" name="category" required>
-                        <option value="wedding">Wedding</option>
-                        <option value="portrait">Portrait</option>
-                        <option value="event">Event</option>
-                        <option value="landscape">Landscape</option>
-                        <option value="sports">Sports</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label for="editGroup">Group</label>
                     <select id="editGroup" name="group_id">
                         <option value="">No Group</option>
                     </select>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="editAltText">Alt Text</label>
-                    <input type="text" id="editAltText" name="alt_text">
-                </div>
                 <div class="form-group">
                     <label for="editSortOrder">Sort Order</label>
                     <input type="number" id="editSortOrder" name="sort_order" min="0" value="0">
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="editAltText">Alt Text</label>
+                <input type="text" id="editAltText" name="alt_text">
             </div>
             <div class="modal-actions">
                 <button type="button" class="btn-secondary" onclick="closeEditModal()">Cancel</button>

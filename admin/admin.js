@@ -4,7 +4,6 @@
  */
 
 const API_BASE = '/api';
-let currentFilter  = 'all';
 let currentGallery = [];
 let allGroups      = [];
 let selectedIds    = new Set();
@@ -22,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     checkAuth();
     setupUploadForm();
-    setupFilterTabs();
     setupGroupForm();
     setupEditForm();
 });
@@ -259,14 +257,13 @@ async function handleUpload(e) {
 
 // ─── Gallery ─────────────────────────────────────────────────────────────────
 
-async function loadGallery(category = 'all') {
+async function loadGallery() {
     const grid = document.getElementById('galleryGrid');
     if (!grid) return;
     grid.innerHTML = '<div class="loader-container"><div class="loader"></div><p>Loading gallery…</p></div>';
 
     try {
-        const url  = category === 'all' ? `${API_BASE}/gallery.php` : `${API_BASE}/gallery.php?category=${category}`;
-        const res  = await fetch(url);
+        const res  = await fetch(`${API_BASE}/gallery.php`);
         const data = await res.json();
         if (data.success) {
             currentGallery = data.data;
@@ -288,7 +285,7 @@ function renderGallery(items) {
     }
 
     grid.innerHTML = items.map(item => {
-        const groupName = allGroups.find(g => g.id == item.group_id)?.title || '';
+        const groupName  = allGroups.find(g => g.id == item.group_id)?.title || '';
         const isSelected = selectedIds.has(item.id);
         return `
         <div class="gallery-admin-item ${isSelected ? 'selected' : ''}" data-id="${item.id}">
@@ -303,26 +300,12 @@ function renderGallery(items) {
                 </div>
             </div>
             <div class="image-info">
-                <span class="category-badge category-${item.category}">${item.category}</span>
                 ${groupName ? `<span class="group-badge">📁 ${escHtml(groupName)}</span>` : ''}
                 <p class="image-alt">${escHtml(item.alt_text || 'No description')}</p>
                 <p class="image-sort">Sort: ${item.sort_order ?? 0}</p>
             </div>
         </div>`;
     }).join('');
-}
-
-// ─── Filter Tabs ─────────────────────────────────────────────────────────────
-
-function setupFilterTabs() {
-    document.querySelectorAll('.filter-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            currentFilter = tab.dataset.filter;
-            loadGallery(currentFilter);
-        });
-    });
 }
 
 // ─── Bulk Selection ──────────────────────────────────────────────────────────
@@ -373,7 +356,7 @@ async function bulkAssignGroup() {
             body:    JSON.stringify({ ids: [...selectedIds], group_id: group_id || null })
         });
         const data = await res.json();
-        if (data.success) { clearSelection(); loadGallery(currentFilter); await loadGroups(); }
+        if (data.success) { clearSelection(); loadGallery(); await loadGroups(); }
         else alert('Failed: ' + (data.error || ''));
     } catch (_) { alert('Network error'); }
 }
@@ -387,7 +370,7 @@ async function bulkDelete() {
             body:    JSON.stringify({ ids: [...selectedIds] })
         });
         const data = await res.json();
-        if (data.success) { clearSelection(); loadGallery(currentFilter); }
+        if (data.success) { clearSelection(); loadGallery(); }
         else alert('Failed: ' + (data.error || ''));
     } catch (_) { alert('Network error'); }
 }
@@ -399,7 +382,6 @@ function editImage(id) {
     if (!item) return;
 
     document.getElementById('editImageId').value   = item.id;
-    document.getElementById('editCategory').value  = item.category;
     document.getElementById('editAltText').value   = item.alt_text || '';
     document.getElementById('editSortOrder').value = item.sort_order ?? 0;
 
@@ -420,11 +402,10 @@ function setupEditForm() {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const payload = {
-            id:           parseInt(document.getElementById('editImageId').value),
-            category:     document.getElementById('editCategory').value,
-            alt_text:     document.getElementById('editAltText').value,
-            sort_order:   parseInt(document.getElementById('editSortOrder').value) || 0,
-            group_id:     document.getElementById('editGroup').value || null
+            id:         parseInt(document.getElementById('editImageId').value),
+            alt_text:   document.getElementById('editAltText').value,
+            sort_order: parseInt(document.getElementById('editSortOrder').value) || 0,
+            group_id:   document.getElementById('editGroup').value || null
         };
 
         try {
@@ -434,7 +415,7 @@ function setupEditForm() {
                 body:    JSON.stringify(payload)
             });
             const data = await res.json();
-            if (data.success) { closeEditModal(); loadGallery(currentFilter); }
+            if (data.success) { closeEditModal(); loadGallery(); }
             else alert('Update failed: ' + (data.error || ''));
         } catch (_) { alert('Network error'); }
     });
@@ -445,7 +426,7 @@ async function deleteSingle(id) {
     try {
         const res  = await fetch(`${API_BASE}/gallery.php?id=${id}`, { method: 'DELETE' });
         const data = await res.json();
-        if (data.success) loadGallery(currentFilter);
+        if (data.success) loadGallery();
         else alert('Delete failed: ' + (data.error || ''));
     } catch (_) { alert('Network error'); }
 }

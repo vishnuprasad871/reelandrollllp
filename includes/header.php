@@ -78,16 +78,7 @@ function navCTA(string $active): string {
 
         <ul class="nav-links-right" id="navLinksRight">
             <li><a href="/portfolio"<?= navActive('portfolio', $activeNav) ?>>Portfolio</a></li>
-            <li class="has-dropdown">
-                <a href="/gallery"<?= navActive('gallery', $activeNav) ?>>Gallery</a>
-                <ul class="dropdown">
-                    <li><a href="/gallery?category=wedding">Wedding</a></li>
-                    <li><a href="/gallery?category=portrait">Portrait</a></li>
-                    <li><a href="/gallery?category=event">Event</a></li>
-                    <li><a href="/gallery?category=landscape">Landscape</a></li>
-                    <li><a href="/gallery?category=sports">Sports</a></li>
-                </ul>
-            </li>
+            <li><a href="/gallery"<?= navActive('gallery', $activeNav) ?>>Gallery</a></li>
             <li><a href="/contact" class="<?= navCTA($activeNav) ?>">Book Now</a></li>
         </ul>
 

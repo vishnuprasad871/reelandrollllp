@@ -3,10 +3,9 @@
  * Groups folder view + image grid view with lightbox
  */
 
-const API_BASE         = '/api';
-let currentCategory    = 'all';
-let currentGroupId     = null;
-let currentGroupTitle  = '';
+const API_BASE        = '/api';
+let currentGroupId    = null;
+let currentGroupTitle = '';
 
 // ─── Spin keyframe (reused) ───────────────────────────────────────────────
 if (!document.getElementById('rnr-spin')) {
@@ -20,21 +19,11 @@ if (!document.getElementById('rnr-spin')) {
 document.addEventListener('DOMContentLoaded', () => {
     if (!document.getElementById('galleryGrid')) return;
 
-    // Values injected by gallery.php
-    currentCategory = (typeof INIT_CATEGORY !== 'undefined') ? INIT_CATEGORY : 'all';
-    const initGroup = (typeof INIT_GROUP_ID !== 'undefined')  ? INIT_GROUP_ID  : null;
-
-    setupFilterButtons();
+    const initGroup = (typeof INIT_GROUP_ID !== 'undefined') ? INIT_GROUP_ID : null;
 
     if (initGroup) {
-        // Came from ?group=X link — open that group
         openGroupById(initGroup);
-    } else if (currentCategory !== 'all') {
-        // Came from ?category=X nav dropdown
-        showImagesView('All Photos');
-        loadImages();
     } else {
-        // Default: show groups folder view
         loadGroupFolders();
     }
 });
@@ -89,17 +78,10 @@ function renderGroupFolders(groups) {
 function openGroup(groupId, groupTitle) {
     currentGroupId    = groupId;
     currentGroupTitle = groupTitle;
-    currentCategory   = 'all';
 
-    // Update URL without page reload
     const url = new URL(window.location);
     url.searchParams.set('group', groupId);
-    url.searchParams.delete('category');
     history.pushState({}, '', url);
-
-    // Reset filter buttons
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector('.filter-btn[data-filter="all"]')?.classList.add('active');
 
     showImagesView(groupTitle);
     loadImages();
@@ -117,14 +99,11 @@ async function openGroupById(groupId) {
 }
 
 function showGroupsView() {
-    currentGroupId   = null;
+    currentGroupId    = null;
     currentGroupTitle = '';
-    currentCategory  = 'all';
 
-    // Update URL
     const url = new URL(window.location);
     url.searchParams.delete('group');
-    url.searchParams.delete('category');
     history.pushState({}, '', url);
 
     document.getElementById('groupsView').style.display  = '';
@@ -156,11 +135,7 @@ async function loadImages() {
 
     try {
         let url = `${API_BASE}/gallery.php`;
-        const params = new URLSearchParams();
-
-        if (currentGroupId)             params.set('group_id', currentGroupId);
-        if (currentCategory !== 'all')  params.set('category', currentCategory);
-        if (params.toString())          url += '?' + params.toString();
+        if (currentGroupId) url += `?group_id=${currentGroupId}`;
 
         const res  = await fetch(url);
         const data = await res.json();
@@ -202,31 +177,6 @@ function renderImages(items) {
     }, 80);
 
     setupLightbox();
-}
-
-// ─── Filter Buttons ───────────────────────────────────────────────────────
-
-function setupFilterButtons() {
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', function () {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentCategory = this.getAttribute('data-filter');
-
-            // Update URL
-            const url = new URL(window.location);
-            if (currentCategory === 'all') url.searchParams.delete('category');
-            else url.searchParams.set('category', currentCategory);
-            history.pushState({}, '', url);
-
-            // Make sure we're in images view
-            if (document.getElementById('imagesView').style.display === 'none') {
-                showImagesView(currentGroupTitle || 'All Photos');
-            }
-
-            loadImages();
-        });
-    });
 }
 
 // ─── Lightbox ─────────────────────────────────────────────────────────────

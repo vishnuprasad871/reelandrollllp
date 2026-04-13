@@ -68,7 +68,8 @@ function createGalleryItem()
     $sort_order   = isset($_POST['sort_order']) ? (int)$_POST['sort_order'] : 0;
 
     $valid_categories = ['wedding', 'portrait', 'event', 'landscape', 'sports'];
-    if (!in_array($category, $valid_categories)) sendErrorResponse('Invalid category', 400);
+    // Category is internal-only; default to 'wedding' if not provided
+    if (!in_array($category, $valid_categories)) $category = 'wedding';
 
     $file_extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
     if (!in_array($file_extension, ALLOWED_EXTENSIONS)) {
