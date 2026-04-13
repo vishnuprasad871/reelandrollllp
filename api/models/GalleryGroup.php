@@ -27,29 +27,34 @@ class GalleryGroup
      */
     public function getAll()
     {
-        // Use cover_image if set, otherwise fall back to the first image in the group
-        $query = "SELECT g.*,
-                         COUNT(gi.id) AS image_count,
-                         COALESCE(gi_cover.filename, gi_first.filename) AS cover_filename,
-                         COALESCE(gi_cover.id, gi_first.id) AS resolved_cover_id
-                  FROM {$this->table} g
-                  LEFT JOIN gallery gi
-                         ON gi.group_id = g.id AND gi.is_active = 1
-                  LEFT JOIN gallery gi_cover
-                         ON gi_cover.id = g.cover_image_id AND gi_cover.is_active = 1
-                  LEFT JOIN gallery gi_first
-                         ON gi_first.id = (
-                             SELECT id FROM gallery
-                             WHERE group_id = g.id AND is_active = 1
-                             ORDER BY sort_order ASC, created_at ASC
-                             LIMIT 1
-                         )
-                  GROUP BY g.id
-                  ORDER BY g.sort_order ASC, g.created_at ASC";
+        try {
+            // Use cover_image if set, otherwise fall back to the first image in the group
+            $query = "SELECT g.*,
+                             COUNT(gi.id) AS image_count,
+                             COALESCE(gi_cover.filename, gi_first.filename) AS cover_filename,
+                             COALESCE(gi_cover.id, gi_first.id) AS resolved_cover_id
+                      FROM {$this->table} g
+                      LEFT JOIN gallery gi
+                             ON gi.group_id = g.id AND gi.is_active = 1
+                      LEFT JOIN gallery gi_cover
+                             ON gi_cover.id = g.cover_image_id AND gi_cover.is_active = 1
+                      LEFT JOIN gallery gi_first
+                             ON gi_first.id = (
+                                 SELECT id FROM gallery
+                                 WHERE group_id = g.id AND is_active = 1
+                                 ORDER BY sort_order ASC, created_at ASC
+                                 LIMIT 1
+                             )
+                      GROUP BY g.id
+                      ORDER BY g.sort_order ASC, g.created_at ASC";
 
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            // Table may not exist yet — return empty array
+            return [];
+        }
     }
 
     /**

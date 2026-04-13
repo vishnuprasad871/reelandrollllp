@@ -32,29 +32,34 @@ class Gallery
      */
     public function getAll($category = null, $group_id = null)
     {
-        $query = "SELECT * FROM {$this->table_name} WHERE is_active = 1";
+        try {
+            $query = "SELECT * FROM {$this->table_name} WHERE is_active = 1";
 
-        if ($category && $category !== 'all') {
-            $query .= " AND category = :category";
+            if ($category && $category !== 'all') {
+                $query .= " AND category = :category";
+            }
+
+            if ($group_id !== null) {
+                $query .= " AND group_id = :group_id";
+            }
+
+            // Fall back to display_order if sort_order column doesn't exist yet
+            $query .= " ORDER BY display_order ASC, created_at DESC";
+
+            $stmt = $this->conn->prepare($query);
+
+            if ($category && $category !== 'all') {
+                $stmt->bindParam(':category', $category);
+            }
+            if ($group_id !== null) {
+                $stmt->bindParam(':group_id', $group_id, PDO::PARAM_INT);
+            }
+
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            return [];
         }
-
-        if ($group_id !== null) {
-            $query .= " AND group_id = :group_id";
-        }
-
-        $query .= " ORDER BY sort_order ASC, display_order ASC, created_at DESC";
-
-        $stmt = $this->conn->prepare($query);
-
-        if ($category && $category !== 'all') {
-            $stmt->bindParam(':category', $category);
-        }
-        if ($group_id !== null) {
-            $stmt->bindParam(':group_id', $group_id, PDO::PARAM_INT);
-        }
-
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**

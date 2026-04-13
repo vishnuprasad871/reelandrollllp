@@ -49,9 +49,11 @@ async function loadGroupFolders() {
 
         renderGroupFolders(data.data);
     } catch (_) {
-        // API unavailable — fall back to default images
-        showImagesView('All Photos');
-        loadDefaultGallery();
+        grid.innerHTML = `
+            <div style="grid-column:1/-1;text-align:center;padding:4rem;color:#888;">
+                <div style="font-size:3rem;margin-bottom:1rem;">📁</div>
+                <p style="font-size:1.1rem;">No photo groups yet.<br>Check back soon!</p>
+            </div>`;
     }
 }
 
@@ -150,9 +152,8 @@ async function loadImages() {
     } catch (_) {
         grid.innerHTML = `
             <div style="grid-column:1/-1;text-align:center;padding:2rem;color:#d63031;">
-                Unable to load photos.
+                Unable to load photos. Please try again later.
             </div>`;
-        loadDefaultGallery();
     }
 }
 

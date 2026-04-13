@@ -42,16 +42,21 @@ async function checkAuth() {
 // ─── Groups ─────────────────────────────────────────────────────────────────
 
 async function loadGroups() {
+    const el = document.getElementById('groupsList');
     try {
         const res  = await fetch(`${API_BASE}/groups.php`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         if (data.success) {
             allGroups = data.data;
             renderGroups(allGroups);
             populateGroupDropdowns(allGroups);
+        } else {
+            throw new Error(data.error || 'Unknown error');
         }
     } catch (e) {
         console.error('Failed to load groups', e);
+        if (el) el.innerHTML = `<p style="color:#d63031;padding:0.5rem 0;">Could not load groups. Run the DB migration on the server then refresh. (${e.message})</p>`;
     }
 }
 
