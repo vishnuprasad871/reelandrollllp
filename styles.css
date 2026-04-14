@@ -1387,7 +1387,7 @@ a:hover {
    PAGE HEADER (For Inner Pages)
    =================================== */
 .page-header {
-  padding: 110px 0 30px;
+  padding: 88px 0 14px;
   text-align: center;
   background: var(--color-darker);
   border-bottom: 1px solid rgba(255, 77, 0, 0.2);
@@ -1395,8 +1395,8 @@ a:hover {
 }
 
 .page-header h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: 0.4rem;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  margin-bottom: 0.2rem;
 }
 
 .page-breadcrumb {
@@ -1404,8 +1404,8 @@ a:hover {
   justify-content: center;
   gap: var(--spacing-sm);
   color: var(--color-gray-light);
-  font-size: 0.85rem;
-  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
 }
 
 .page-breadcrumb a {
@@ -1577,8 +1577,15 @@ a:hover {
    GALLERY GRID (Masonry Layout)
    =================================== */
 .gallery-container {
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-xl) 0 var(--spacing-lg);
   background: var(--color-white);
+}
+
+.gallery-cta-wrap {
+  text-align: center;
+  padding: var(--spacing-lg) 0 var(--spacing-md);
+  border-top: 1px solid rgba(255, 77, 0, 0.15);
+  margin-top: var(--spacing-lg);
 }
 
 /* ── Group Folder Grid ─────────────────────────────────── */

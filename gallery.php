@@ -49,17 +49,13 @@ $startInImagesView = ($urlGroup !== null);
 
                 <!-- Gallery Grid -->
                 <div class="gallery-grid" id="galleryGrid"></div>
+
+                <!-- Contact CTA -->
+                <div class="gallery-cta-wrap">
+                    <a href="/contact" class="btn btn-primary"><span>Contact Us</span></a>
+                </div>
             </div>
 
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="contact-cta section">
-        <div class="container reveal">
-            <h2>Love What You <span class="text-gradient">See</span>?</h2>
-            <p>Let's create stunning photography for your special moments</p>
-            <a href="/contact" class="btn btn-primary" style="margin-top:2rem;"><span>Contact Us</span></a>
         </div>
     </section>
 
