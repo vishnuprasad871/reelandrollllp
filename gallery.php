@@ -26,11 +26,6 @@ $startInImagesView = ($urlGroup !== null);
 
             <!-- ── Groups Folder View (default) ─────────────────── -->
             <div id="groupsView" <?= $startInImagesView ? 'style="display:none;"' : '' ?>>
-                <div class="section-header reveal" style="margin-bottom:2rem;">
-                    <p class="section-subtitle">Our Collection</p>
-                    <h2>Browse by <span class="text-gradient">Category</span></h2>
-                    <p>Select a group to explore photos</p>
-                </div>
                 <div id="groupsFolderGrid" class="groups-folder-grid reveal">
                     <div style="grid-column:1/-1;text-align:center;padding:3rem;color:#888;">
                         <div style="width:36px;height:36px;border:3px solid #ddd;border-top-color:#FF4D00;border-radius:50%;margin:0 auto 1rem;animation:spin .8s linear infinite;"></div>

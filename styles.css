@@ -1577,7 +1577,7 @@ a:hover {
    GALLERY GRID (Masonry Layout)
    =================================== */
 .gallery-container {
-  padding: var(--spacing-xl) 0 var(--spacing-lg);
+  padding: 1.5rem 0 var(--spacing-lg);
   background: var(--color-white);
 }
 
