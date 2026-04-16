@@ -226,6 +226,48 @@ function previewImage(file) {
     reader.readAsDataURL(file);
 }
 
+/**
+ * Compress an image File via Canvas before upload.
+ * Resizes to max 1920px on longest side, exports as WebP (q 0.85) or JPEG fallback.
+ * Returns a File with a corrected name/type.
+ */
+function compressImage(file, maxPx = 1920, quality = 0.85) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        const url = URL.createObjectURL(file);
+
+        img.onload = () => {
+            URL.revokeObjectURL(url);
+
+            let { width, height } = img;
+            if (width > maxPx || height > maxPx) {
+                const ratio = Math.min(maxPx / width, maxPx / height);
+                width  = Math.round(width  * ratio);
+                height = Math.round(height * ratio);
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width  = width;
+            canvas.height = height;
+            canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+
+            // Try WebP first (best compression), fall back to JPEG
+            const useWebP = canvas.toDataURL('image/webp').startsWith('data:image/webp');
+            const mimeType = useWebP ? 'image/webp' : 'image/jpeg';
+            const ext      = useWebP ? 'webp' : 'jpg';
+            const baseName = file.name.replace(/\.[^.]+$/, '');
+
+            canvas.toBlob(blob => {
+                const compressed = new File([blob], `${baseName}.${ext}`, { type: mimeType });
+                resolve(compressed);
+            }, mimeType, quality);
+        };
+
+        img.onerror = () => { URL.revokeObjectURL(url); resolve(file); }; // fallback: original
+        img.src = url;
+    });
+}
+
 async function handleUpload(e) {
     e.preventDefault();
     const form      = e.target;
@@ -240,7 +282,15 @@ async function handleUpload(e) {
     message.style.display  = 'none';
 
     try {
-        const res  = await fetch(`${API_BASE}/gallery.php`, { method: 'POST', body: new FormData(form) });
+        // Build FormData manually so we can swap in the compressed image
+        const rawFile = document.getElementById('imageFile').files[0];
+        const fd = new FormData(form);
+        if (rawFile) {
+            const compressed = await compressImage(rawFile);
+            fd.set('image', compressed, compressed.name);
+        }
+
+        const res  = await fetch(`${API_BASE}/gallery.php`, { method: 'POST', body: fd });
         const data = await res.json();
         if (data.success) {
             showMessage(message, 'Image uploaded successfully!', 'success');
