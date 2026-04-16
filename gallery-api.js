@@ -229,6 +229,27 @@ function loadDefaultGallery() {
     setupLightbox();
 }
 
+// ─── Image Protection ────────────────────────────────────────────────────
+
+(function () {
+    // Block right-click on gallery images and lightbox
+    document.addEventListener('contextmenu', e => {
+        if (e.target.closest('#galleryGrid, #groupsFolderGrid, #lightboxModal, .group-folder')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Block drag-to-save on gallery images
+    document.addEventListener('dragstart', e => {
+        if (e.target.tagName === 'IMG' &&
+            e.target.closest('#galleryGrid, #groupsFolderGrid, #lightboxModal, .group-folder')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+})();
+
 // ─── Helpers ─────────────────────────────────────────────────────────────
 
 function escHtml(str) {
