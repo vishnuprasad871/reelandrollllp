@@ -7,6 +7,7 @@
 require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/models/Gallery.php';
 require_once __DIR__ . '/models/User.php';
+require_once __DIR__ . '/helpers/ImageOptimizer.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $action = $_GET['action'] ?? '';
@@ -88,6 +89,9 @@ function createGalleryItem()
         sendErrorResponse('Failed to upload image: ' . $detail, 500);
     }
 
+    // Resize to max 1920px and convert to WebP if GD supports it
+    $filename = ImageOptimizer::optimize($target_path, $filename);
+
     $gallery                = new Gallery();
     $gallery->filename      = $filename;
     $gallery->original_name = $file['name'];
@@ -111,7 +115,7 @@ function createGalleryItem()
         ], 201);
     }
 
-    unlink($target_path);
+    @unlink(UPLOAD_DIR . $filename);
     sendErrorResponse('Failed to save image data', 500);
 }
 
