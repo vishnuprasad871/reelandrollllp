@@ -14,10 +14,10 @@
                     <a href="/"><img src="/assets/Logo.png" alt="Reel &amp; Roll Photography" style="height:50px;width:auto;margin-bottom:0.5rem;display:block;"></a>
                     <p>Capturing life's most precious moments with passion, creativity, and professional excellence since 2024.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
-                        <a href="#" class="social-link" aria-label="Facebook">👥</a>
-                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
-                        <a href="#" class="social-link" aria-label="Pinterest">📌</a>
+                        <a href="https://www.instagram.com/reelandroll.photography/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
 

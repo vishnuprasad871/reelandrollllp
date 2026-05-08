@@ -101,7 +101,7 @@ require_once 'includes/header.php';
                     <p style="color: var(--color-yellow); font-size: 1.1rem; margin-top: 1rem;">
                         <a href="tel:+971545465757">+971 545465757</a>
                     </p>
-                    <p>Monday - Friday: 9AM - 6PM<br>Saturday: 10AM - 4PM</p>
+                    <p>Monday - Friday: 9AM - 6PM<br>Saturday & Sunday: 10AM - 5PM</p>
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">📍</div>
