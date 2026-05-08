@@ -5,15 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Browse our complete photography gallery - Wedding, Portrait, Event, Landscape, and more">
+        content="Browse our complete photography gallery - Wedding, Portrait, Event, Landscape, Sports, and more">
     <title>Gallery | Reel and Roll Photography</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -24,34 +26,51 @@
     <!-- Navigation -->
     <nav class="navbar scrolled" id="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo"><img src="assets/logo.jpeg" alt="Reel & Roll Photography"></a>
-            <ul class="nav-links" id="navLinks">
+            <ul class="nav-links-left" id="navLinksLeft">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="gallery.html" class="active">Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li class="has-dropdown">
+                    <a href="services.html">Photography</a>
+                    <ul class="dropdown">
+                        <li><a href="services.html#wedding">Wedding</a></li>
+                        <li><a href="services.html#portrait">Portrait</a></li>
+                        <li><a href="services.html#event">Event Coverage</a></li>
+                        <li><a href="services.html#landscape">Landscape & Sports</a></li>
+                        <li><a href="services.html#corporate">Corporate</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="video-gallery.html">Videography</a>
+                    <ul class="dropdown">
+                        <li><a href="video-gallery.html#weddings">Wedding Films</a></li>
+                        <li><a href="video-gallery.html#events">Event Coverage</a></li>
+                        <li><a href="video-gallery.html#corporate">Corporate Films</a></li>
+                        <li><a href="video-gallery.html#commercial">Commercial</a></li>
+                    </ul>
+                </li>
             </ul>
-            <div class="menu-toggle" id="menuToggle">
+            <a href="index.html" class="logo"><img src="assets/Logo.png" alt="Reel & Roll Photography"></a>
+            <ul class="nav-links-right" id="navLinksRight">
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li class="has-dropdown">
+                    <a href="gallery.html" class="active">Gallery</a>
+                    <ul class="dropdown">
+                        <li><a href="gallery.html?category=wedding">Wedding</a></li>
+                        <li><a href="gallery.html?category=portrait">Portrait</a></li>
+                        <li><a href="gallery.html?category=event">Event</a></li>
+                        <li><a href="gallery.html?category=landscape">Landscape</a></li>
+                        <li><a href="gallery.html?category=sports">Sports</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html" class="btn-nav-cta">Book Now</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
-
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1 class="fade-in-up">Photo <span class="text-gradient">Gallery</span></h1>
-            <div class="page-breadcrumb fade-in-up">
-                <a href="index.html">Home</a>
-                <span>/</span>
-                <span>Gallery</span>
-            </div>
-        </div>
-    </section>
 
     <!-- Gallery Section -->
     <section class="gallery-container">
@@ -69,10 +88,11 @@
                 <button class="filter-btn" data-filter="portrait">Portrait</button>
                 <button class="filter-btn" data-filter="event">Event</button>
                 <button class="filter-btn" data-filter="landscape">Landscape</button>
+                <button class="filter-btn" data-filter="sports">Sports</button>
             </div>
 
             <!-- Gallery Grid -->
-            <div class="gallery-grid">
+            <div class="gallery-grid" id="galleryGrid">
                 <!-- Wedding Photos -->
                 <div class="gallery-item reveal" data-category="wedding">
                     <img src="assets/portfolio_wedding_1770402245749.png" alt="Wedding Photography">
@@ -133,12 +153,12 @@
                 <div class="footer-section">
                     <h3>Reel & Roll</h3>
                     <p>Capturing life's most precious moments with passion, creativity, and professional excellence
-                        since 2010.</p>
+                        since 2024.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
-                        <a href="#" class="social-link" aria-label="Facebook">👥</a>
-                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
-                        <a href="#" class="social-link" aria-label="Pinterest">📌</a>
+                        <a href="https://www.instagram.com/reelandroll.photography/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
 
@@ -157,9 +177,10 @@
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li>📧 <a href="mailto:info@reelandroll.com">info@reelandroll.com</a></li>
-                        <li>📱 <a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-                        <li>📍 123 Photography Lane<br>Creative City, CC 12345</li>
+                        <li>📧 <a href="mailto:reelrollphotography26@gmail.com">reelrollphotography26@gmail.com</a></li>
+                        <li>📱 <a href="tel:+971545465757">+971 545465757</a></li>
+                        <li>📍 Bakhit Business Centre, Office No: M-88<br>Arzoo Building, Near Al Tawar Centre<br>Al
+                            Qusais, Dubai – UAE</li>
                     </ul>
                 </div>
             </div>
@@ -168,17 +189,24 @@
                 <p>&copy; 2026 <a href="index.html">Reel and Roll Photography</a>. All rights reserved.</p>
             </div>
         </div>
-    </footer>  
+    </footer>
 
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/971545465757" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><img src="assets/whatsappIcon-mhd.svg" alt="WhatsApp"></a>
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/971545465757" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><img src="assets/whatsappIcon-mhd.svg" alt="WhatsApp"></a>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/971545465757" class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"><img src="assets/whatsappIcon-mhd.svg" alt="WhatsApp"></a>
 
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="Full size image">
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+    <script src="gallery-api.js"></script>
 </body>
 
 </html>

@@ -13,9 +13,11 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -26,20 +28,49 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo"><img src="assets/logo.jpeg" alt="Reel & Roll Photography"></a>
-            <ul class="nav-links" id="navLinks">
+            <ul class="nav-links-left" id="navLinksLeft">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li class="has-dropdown">
+                    <a href="services.html">Photography</a>
+                    <ul class="dropdown">
+                        <li><a href="services.html#wedding">Wedding</a></li>
+                        <li><a href="services.html#portrait">Portrait</a></li>
+                        <li><a href="services.html#event">Event Coverage</a></li>
+                        <li><a href="services.html#landscape">Landscape & Sports</a></li>
+                        <li><a href="services.html#corporate">Corporate</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="video-gallery.html">Videography</a>
+                    <ul class="dropdown">
+                        <li><a href="video-gallery.html#weddings">Wedding Films</a></li>
+                        <li><a href="video-gallery.html#events">Event Coverage</a></li>
+                        <li><a href="video-gallery.html#corporate">Corporate Films</a></li>
+                        <li><a href="video-gallery.html#commercial">Commercial</a></li>
+                    </ul>
+                </li>
             </ul>
-            <div class="menu-toggle" id="menuToggle">
+            <a href="index.html" class="logo"><img src="assets/Logo.png" alt="Reel & Roll Photography"></a>
+            <ul class="nav-links-right" id="navLinksRight">
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li class="has-dropdown">
+                    <a href="gallery.html">Gallery</a>
+                    <ul class="dropdown">
+                        <li><a href="gallery.html?category=wedding">Wedding</a></li>
+                        <li><a href="gallery.html?category=portrait">Portrait</a></li>
+                        <li><a href="gallery.html?category=event">Event</a></li>
+                        <li><a href="gallery.html?category=landscape">Landscape</a></li>
+                        <li><a href="gallery.html?category=sports">Sports</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html" class="btn-nav-cta">Book Now</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -48,25 +79,36 @@
         <img src="assets/homepage_hero_black_1770402899597.png" alt="Professional Photography" class="hero-background">
         <div class="hero-overlay"></div>
 
-        <!-- Photography Decorative Elements -->
-        <div class="camera-frame"></div>
-        <div class="aperture-decoration"></div>
-        <div class="film-strip"></div>
-
         <div class="hero-content">
-            <p class="hero-subtitle fade-in-up">Professional Photography</p>
+            <p class="hero-subtitle fade-in-up">The Art of Visual Storytelling</p>
             <h1 class="hero-title fade-in-up">
-                Capturing <span>Moments</span>,<br>
-                Creating <span>Memories</span>
+                Capturing Your <span>Legacy</span><br>
+                Elevating Your <span>Brand</span>
             </h1>
             <p class="hero-description fade-in-up">
-                Every frame tells a story. Every click captures emotion. Transform your special moments into timeless
-                art with Reel and Roll Photography.
+                From high-end weddings to corporate masterpieces, we transform your fleeting moments into timeless
+                visual legacies. The standard of excellence in Dubai since 2024.
             </p>
             <div class="cta-buttons fade-in-up">
-                <a href="portfolio.html" class="btn btn-primary"><span>View Portfolio</span></a>
-                <a href="contact.html" class="btn btn-secondary"><span>Book a Session</span></a>
+                <a href="contact.html" class="btn btn-primary"><span>Secure Your Date</span></a>
+                <a href="portfolio.html" class="btn btn-secondary"><span>Explore Artistry</span></a>
             </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar" style="display: none;">
+        <div class="container logo-slider">
+            <div class="trust-logo"
+                style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem;">FORBES</div>
+            <div class="trust-logo"
+                style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem;">VOGUE</div>
+            <div class="trust-logo"
+                style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem;">DUBAI TOURISM</div>
+            <div class="trust-logo"
+                style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem;">ETIHAD</div>
+            <div class="trust-logo"
+                style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem;">EMAAR</div>
         </div>
     </section>
 
@@ -115,58 +157,42 @@
         </div>
     </section>
 
-    <!-- Services Overview Section -->
-    <section class="services-overview section">
+    <!-- Process Section -->
+    <section class="section section-dark">
         <div class="container">
             <div class="section-header reveal">
-                <p class="section-subtitle">What We Offer</p>
-                <h2>Our <span class="text-gradient">Services</span></h2>
-                <p>Professional photography services tailored to your vision</p>
+                <p class="section-subtitle">How We Work</p>
+                <h2>Our Creative <span class="text-gradient">Process</span></h2>
+                <p>A seamless experience from initial vision to final masterpiece</p>
             </div>
 
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <div class="service-icon">💍</div>
-                    <h3>Wedding Photography</h3>
-                    <p>Capture every precious moment of your special day with our comprehensive wedding packages.</p>
+            <div class="process-grid">
+                <div class="process-item reveal">
+                    <div class="process-number">01</div>
+                    <div class="process-content">
+                        <h3>Vision Discovery</h3>
+                        <p>A deep-dive consultation to understand your unique story, style, and requirements.</p>
+                    </div>
                 </div>
-
-                <div class="service-card reveal">
-                    <div class="service-icon">👤</div>
-                    <h3>Portrait Sessions</h3>
-                    <p>Professional headshots and personal portraits that showcase your unique personality.</p>
+                <div class="process-item reveal">
+                    <div class="process-number">02</div>
+                    <div class="process-content">
+                        <h3>The Masterpiece Session</h3>
+                        <p>Artistic direction and world-class technical execution to capture the soul of the moment.</p>
+                    </div>
                 </div>
-
-                <div class="service-card reveal">
-                    <div class="service-icon">🎉</div>
-                    <h3>Event Coverage</h3>
-                    <p>Dynamic photography that captures the energy and excitement of your special events.</p>
+                <div class="process-item reveal">
+                    <div class="process-number">03</div>
+                    <div class="process-content">
+                        <h3>Timeless Delivery</h3>
+                        <p>Precision retouching and presentation of your curated digital and physical collections.</p>
+                    </div>
                 </div>
-
-                <div class="service-card reveal">
-                    <div class="service-icon">🏞️</div>
-                    <h3>Landscape Photography</h3>
-                    <p>Breathtaking nature and landscape photography in stunning detail.</p>
-                </div>
-
-                <div class="service-card reveal">
-                    <div class="service-icon">🏢</div>
-                    <h3>Commercial Photography</h3>
-                    <p>High-quality product and commercial photography that elevates your brand.</p>
-                </div>
-
-                <div class="service-card reveal">
-                    <div class="service-icon">✨</div>
-                    <h3>Photo Editing</h3>
-                    <p>Professional retouching and editing to bring out the best in every photo.</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="services.html" class="btn btn-primary"><span>View All Services</span></a>
             </div>
         </div>
     </section>
+
+
 
     <!-- Statistics Section -->
     <section class="stats-section section">
@@ -202,11 +228,13 @@
             </div>
 
             <div class="testimonials-grid">
-                <div class="testimonial-card reveal">
+                <div class="testimonial-card reveal glass-panel">
+                    <div class="testimonial-stars" style="color: var(--color-primary); margin-bottom: 1rem;">★★★★★</div>
                     <p class="testimonial-text">"Absolutely phenomenal work! They captured our wedding day perfectly.
                         Every photo tells a story and brings back wonderful memories. Highly recommend!"</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">SM</div>
+                        <img src="https://i.pravatar.cc/100?u=sarah" alt="Sarah Mitchell"
+                            style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--color-primary);">
                         <div>
                             <div class="author-name">Sarah Mitchell</div>
                             <div class="author-role">Bride</div>
@@ -214,11 +242,13 @@
                     </div>
                 </div>
 
-                <div class="testimonial-card reveal">
+                <div class="testimonial-card reveal glass-panel">
+                    <div class="testimonial-stars" style="color: var(--color-primary); margin-bottom: 1rem;">★★★★★</div>
                     <p class="testimonial-text">"Professional, creative, and a pleasure to work with. The portrait
                         session was fun and the results exceeded all expectations. Worth every penny!"</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">JD</div>
+                        <img src="https://i.pravatar.cc/100?u=james" alt="James Davidson"
+                            style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--color-primary);">
                         <div>
                             <div class="author-name">James Davidson</div>
                             <div class="author-role">CEO, Tech Solutions</div>
@@ -226,11 +256,13 @@
                     </div>
                 </div>
 
-                <div class="testimonial-card reveal">
+                <div class="testimonial-card reveal glass-panel">
+                    <div class="testimonial-stars" style="color: var(--color-primary); margin-bottom: 1rem;">★★★★★</div>
                     <p class="testimonial-text">"Incredible attention to detail and artistic vision. They turned our
                         event into a visual masterpiece. Can't wait to work with them again!"</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">EC</div>
+                        <img src="https://i.pravatar.cc/100?u=emily" alt="Emily Chen"
+                            style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--color-primary);">
                         <div>
                             <div class="author-name">Emily Chen</div>
                             <div class="author-role">Event Coordinator</div>
@@ -244,9 +276,12 @@
     <!-- Contact CTA Section -->
     <section class="contact-cta section">
         <div class="container reveal">
-            <h2>Ready to Capture Your <span class="text-gradient">Moments</span>?</h2>
-            <p>Let's discuss your photography needs and create something beautiful together</p>
-            <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;"><span>Get In Touch</span></a>
+            <p class="section-subtitle" style="color: var(--color-primary);">Limited Availability</p>
+            <h2 style="font-size: 3rem;">Ready to Secure Your <span class="text-gradient">Legacy</span>?</h2>
+            <p style="font-size: 1.2rem; margin-top: 1rem;">We are currently booking for Q3 & Q4 2026. Contact us today
+                to check availability for your date.</p>
+            <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem; padding: 1.5rem 3rem;"><span>Check
+                    My Date</span></a>
         </div>
     </section>
 
@@ -257,12 +292,12 @@
                 <div class="footer-section">
                     <h3>Reel & Roll</h3>
                     <p>Capturing life's most precious moments with passion, creativity, and professional excellence
-                        since 2010.</p>
+                        since 2024.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
-                        <a href="#" class="social-link" aria-label="Facebook">👥</a>
-                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
-                        <a href="#" class="social-link" aria-label="Pinterest">📌</a>
+                        <a href="https://www.instagram.com/reelandroll.photography/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
 
@@ -281,9 +316,10 @@
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li>📧 <a href="mailto:info@reelandroll.com">info@reelandroll.com</a></li>
-                        <li>📱 <a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-                        <li>📍 123 Photography Lane<br>Creative City, CC 12345</li>
+                        <li>📧 <a href="mailto:reelrollphotography26@gmail.com">reelrollphotography26@gmail.com</a></li>
+                        <li>📱 <a href="tel:+971545465757">+971 545465757</a></li>
+                        <li>📍 Bakhit Business Centre, Office No: M-88<br>Arzoo Building, Near Al Tawar Centre<br>Al
+                            Qusais, Dubai – UAE</li>
                     </ul>
                 </div>
             </div>

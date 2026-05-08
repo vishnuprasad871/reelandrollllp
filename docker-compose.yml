@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # PHP and Apache Web Server
+  web:
+    build: .
+    container_name: reelandroll-web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./uploads:/var/www/html/uploads
+    environment:
+      - DB_HOST=mysql
+      - DB_NAME=reelandroll
+      - DB_USER=reeluser
+      - DB_PASSWORD=reelpass123
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - APP_URL=http://localhost:8080
+    depends_on:
+      - mysql
+    networks:
+      - reelandroll-network
+
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: reelandroll-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=reelandroll
+      - MYSQL_USER=reeluser
+      - MYSQL_PASSWORD=reelpass123
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d
+    networks:
+      - reelandroll-network
+
+  # PHPMyAdmin for database management
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: reelandroll-phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=rootpassword
+    depends_on:
+      - mysql
+    networks:
+      - reelandroll-network
+
+networks:
+  reelandroll-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local

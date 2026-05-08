@@ -11,9 +11,11 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -24,20 +26,49 @@
     <!-- Navigation -->
     <nav class="navbar scrolled" id="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo"><img src="assets/logo.jpeg" alt="Reel & Roll Photography"></a>
-            <ul class="nav-links" id="navLinks">
+            <ul class="nav-links-left" id="navLinksLeft">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" class="active">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li class="has-dropdown">
+                    <a href="services.html">Photography</a>
+                    <ul class="dropdown">
+                        <li><a href="services.html#wedding">Wedding</a></li>
+                        <li><a href="services.html#portrait">Portrait</a></li>
+                        <li><a href="services.html#event">Event Coverage</a></li>
+                        <li><a href="services.html#landscape">Landscape & Sports</a></li>
+                        <li><a href="services.html#corporate">Corporate</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="video-gallery.html">Videography</a>
+                    <ul class="dropdown">
+                        <li><a href="video-gallery.html#weddings">Wedding Films</a></li>
+                        <li><a href="video-gallery.html#events">Event Coverage</a></li>
+                        <li><a href="video-gallery.html#corporate">Corporate Films</a></li>
+                        <li><a href="video-gallery.html#commercial">Commercial</a></li>
+                    </ul>
+                </li>
             </ul>
-            <div class="menu-toggle" id="menuToggle">
+            <a href="index.html" class="logo"><img src="assets/Logo.png" alt="Reel & Roll Photography"></a>
+            <ul class="nav-links-right" id="navLinksRight">
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li class="has-dropdown">
+                    <a href="gallery.html">Gallery</a>
+                    <ul class="dropdown">
+                        <li><a href="gallery.html?category=wedding">Wedding</a></li>
+                        <li><a href="gallery.html?category=portrait">Portrait</a></li>
+                        <li><a href="gallery.html?category=event">Event</a></li>
+                        <li><a href="gallery.html?category=landscape">Landscape</a></li>
+                        <li><a href="gallery.html?category=sports">Sports</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html" class="btn-nav-cta">Book Now</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -109,10 +140,10 @@
                 <p>Experience the Reel and Roll difference</p>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div class="why-grid">
                 <div class="service-card reveal">
                     <div class="service-icon">⭐</div>
-                    <h3>15+ Years Experience</h3>
+                    <h3>5+ Years Experience</h3>
                     <p>Over a decade of expertise in capturing life's special moments across all photography genres.</p>
                 </div>
                 <div class="service-card reveal">
@@ -128,10 +159,10 @@
                     </p>
                 </div>
                 <div class="service-card reveal">
-                    <div class="service-icon">💰</div>
-                    <h3>Competitive Pricing</h3>
-                    <p>Premium quality photography at fair, transparent prices with flexible packages to suit your
-                        needs.</p>
+                    <div class="service-icon">🤝</div>
+                    <h3>Tailored Solutions</h3>
+                    <p>Every project is unique. We craft bespoke solutions to match your vision, timeline, and
+                        objectives.</p>
                 </div>
                 <div class="service-card reveal">
                     <div class="service-icon">⚡</div>
@@ -217,12 +248,12 @@
                 <div class="footer-section">
                     <h3>Reel & Roll</h3>
                     <p>Capturing life's most precious moments with passion, creativity, and professional excellence
-                        since 2010.</p>
+                        since 2024.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
-                        <a href="#" class="social-link" aria-label="Facebook">👥</a>
-                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
-                        <a href="#" class="social-link" aria-label="Pinterest">📌</a>
+                        <a href="https://www.instagram.com/reelandroll.photography/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
 
@@ -241,9 +272,10 @@
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li>📧 <a href="mailto:info@reelandroll.com">info@reelandroll.com</a></li>
-                        <li>📱 <a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-                        <li>📍 123 Photography Lane<br>Creative City, CC 12345</li>
+                        <li>📧 <a href="mailto:reelrollphotography26@gmail.com">reelrollphotography26@gmail.com</a></li>
+                        <li>📱 <a href="tel:+971545465757">+971 545465757</a></li>
+                        <li>📍 Bakhit Business Centre, Office No: M-88<br>Arzoo Building, Near Al Tawar Centre<br>Al
+                            Qusais, Dubai – UAE</li>
                     </ul>
                 </div>
             </div>

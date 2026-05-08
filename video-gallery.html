@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Reel and Roll Photography - Professional Video Portfolio. Wedding videos, event coverage, commercial videos, and more.">
+    <title>Video Gallery | Reel and Roll Photography</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <ul class="nav-links-left" id="navLinksLeft">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="has-dropdown">
+                    <a href="services.html">Photography</a>
+                    <ul class="dropdown">
+                        <li><a href="services.html#wedding">Wedding</a></li>
+                        <li><a href="services.html#portrait">Portrait</a></li>
+                        <li><a href="services.html#event">Event Coverage</a></li>
+                        <li><a href="services.html#landscape">Landscape & Sports</a></li>
+                        <li><a href="services.html#corporate">Corporate</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="video-gallery.html" class="active">Videography</a>
+                    <ul class="dropdown">
+                        <li><a href="video-gallery.html#weddings">Wedding Films</a></li>
+                        <li><a href="video-gallery.html#events">Event Coverage</a></li>
+                        <li><a href="video-gallery.html#corporate">Corporate Films</a></li>
+                        <li><a href="video-gallery.html#commercial">Commercial</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <a href="index.html" class="logo"><img src="assets/Logo.png" alt="Reel & Roll Photography"></a>
+            <ul class="nav-links-right" id="navLinksRight">
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li class="has-dropdown">
+                    <a href="gallery.html">Gallery</a>
+                    <ul class="dropdown">
+                        <li><a href="gallery.html?category=wedding">Wedding</a></li>
+                        <li><a href="gallery.html?category=portrait">Portrait</a></li>
+                        <li><a href="gallery.html?category=event">Event</a></li>
+                        <li><a href="gallery.html?category=landscape">Landscape</a></li>
+                        <li><a href="gallery.html?category=sports">Sports</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html" class="btn-nav-cta">Book Now</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="fade-in-up">Video <span class="text-gradient">Gallery</span></h1>
+            <p class="page-subtitle fade-in-up">Cinematic storytelling capturing the essence of your moments</p>
+            <div class="page-breadcrumb fade-in-up">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Video Gallery</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery -->
+    <section class="section" style="background: var(--color-dark);">
+        <div class="container">
+            <!-- Filter Tabs -->
+            <div class="gallery-filters reveal" id="videoFilters">
+                <button class="filter-btn active" data-cat="all">All</button>
+                <button class="filter-btn" data-cat="wedding">Wedding Films</button>
+                <button class="filter-btn" data-cat="events">Events</button>
+                <button class="filter-btn" data-cat="corporate">Corporate</button>
+                <button class="filter-btn" data-cat="commercial">Commercial</button>
+            </div>
+
+            <!-- Video Grid -->
+            <div id="videoGrid" class="vimeo-grid" style="margin-top: 3rem;">
+                <div class="empty-state" style="text-align:center; padding: 5rem 0; color: var(--color-gray);">
+                    <p style="font-size:1.2rem;">Loading videos...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Reel & Roll</h4>
+                    <p>Professional photography and videography services capturing your most precious moments since
+                        2024.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Galleries</h4>
+                    <ul>
+                        <li><a href="video-gallery.html">Video Gallery</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📧 <a href="mailto:reelrollphotography26@gmail.com">reelrollphotography26@gmail.com</a></p>
+                    <p>📱 +971 50 123 4567</p>
+                    <p>📍 Dubai, UAE</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Reel and Roll Photography. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        (function () {
+            const STORAGE_KEY = 'rnr_videos';
+            const grid = document.getElementById('videoGrid');
+            const filterBtns = document.querySelectorAll('#videoFilters .filter-btn');
+
+            function getVideos() {
+                try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (e) { return []; }
+            }
+
+            function renderVideos(cat) {
+                const videos = getVideos();
+                const filtered = cat === 'all' ? videos : videos.filter(v => v.category === cat);
+                if (!filtered.length) {
+                    grid.innerHTML = '<div class="empty-state" style="text-align:center;padding:5rem 0;color:var(--color-gray);"><p style="font-size:1.2rem;">No videos in this category yet.</p></div>';
+                    return;
+                }
+                grid.innerHTML = filtered.map(v => `
+                <div class="vimeo-card${v.vertical ? ' vertical' : ''}" data-cat="${v.category}">
+                    <div class="vimeo-wrapper">
+                        <iframe src="https://www.youtube.com/embed/${v.videoId}?rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0&color=white"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            title="${v.title}">
+                        </iframe>
+                    </div>
+                    <div class="vimeo-info">
+                        <h4>${v.title}</h4>
+                        <p class="vimeo-meta">${v.categoryLabel} • ${v.year}${v.vertical ? ' • Vertical' : ''}</p>
+                        ${v.description ? `<p class="vimeo-desc">${v.description}</p>` : ''}
+                    </div>
+                </div>
+            `).join('');
+            }
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    renderVideos(this.dataset.cat);
+                });
+            });
+
+            renderVideos('all');
+        })();
+    </script>
+</body>
+
+</html>

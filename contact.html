@@ -10,9 +10,11 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -23,20 +25,49 @@
     <!-- Navigation -->
     <nav class="navbar scrolled" id="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo"><img src="assets/logo.jpeg" alt="Reel & Roll Photography"></a>
-            <ul class="nav-links" id="navLinks">
+            <ul class="nav-links-left" id="navLinksLeft">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li class="has-dropdown">
+                    <a href="services.html">Photography</a>
+                    <ul class="dropdown">
+                        <li><a href="services.html#wedding">Wedding</a></li>
+                        <li><a href="services.html#portrait">Portrait</a></li>
+                        <li><a href="services.html#event">Event Coverage</a></li>
+                        <li><a href="services.html#landscape">Landscape & Sports</a></li>
+                        <li><a href="services.html#corporate">Corporate</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="video-gallery.html">Videography</a>
+                    <ul class="dropdown">
+                        <li><a href="video-gallery.html#weddings">Wedding Films</a></li>
+                        <li><a href="video-gallery.html#events">Event Coverage</a></li>
+                        <li><a href="video-gallery.html#corporate">Corporate Films</a></li>
+                        <li><a href="video-gallery.html#commercial">Commercial</a></li>
+                    </ul>
+                </li>
             </ul>
-            <div class="menu-toggle" id="menuToggle">
+            <a href="index.html" class="logo"><img src="assets/Logo.png" alt="Reel & Roll Photography"></a>
+            <ul class="nav-links-right" id="navLinksRight">
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li class="has-dropdown">
+                    <a href="gallery.html">Gallery</a>
+                    <ul class="dropdown">
+                        <li><a href="gallery.html?category=wedding">Wedding</a></li>
+                        <li><a href="gallery.html?category=portrait">Portrait</a></li>
+                        <li><a href="gallery.html?category=event">Event</a></li>
+                        <li><a href="gallery.html?category=landscape">Landscape</a></li>
+                        <li><a href="gallery.html?category=sports">Sports</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html" class="btn-nav-cta active">Book Now</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -63,6 +94,7 @@
 
             <div class="contact-container">
                 <form class="contact-form reveal" id="contactForm">
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Your Name *</label>
@@ -128,7 +160,7 @@
                     <div class="service-icon">📧</div>
                     <h3>Email Us</h3>
                     <p style="color: var(--color-yellow); font-size: 1.1rem; margin-top: 1rem;">
-                        <a href="mailto:info@reelandroll.com">info@reelandroll.com</a>
+                        <a href="mailto:reelrollphotography26@gmail.com">reelrollphotography26@gmail.com</a>
                     </p>
                     <p>We respond to all emails within 24 hours</p>
                 </div>
@@ -137,17 +169,18 @@
                     <div class="service-icon">📱</div>
                     <h3>Call Us</h3>
                     <p style="color: var(--color-yellow); font-size: 1.1rem; margin-top: 1rem;">
-                        <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                        <a href="tel:+971545465757">+971 545465757</a>
                     </p>
-                    <p>Monday - Friday: 9AM - 6PM<br>Saturday: 10AM - 4PM</p>
+                    <p>Monday - Friday: 9AM - 6PM<br>Saturday & Sunday: 10AM - 5PM</p>
                 </div>
 
                 <div class="service-card reveal">
                     <div class="service-icon">📍</div>
                     <h3>Visit Us</h3>
                     <p style="color: var(--color-yellow); font-size: 1.1rem; margin-top: 1rem;">
-                        123 Photography Lane<br>
-                        Creative City, CC 12345
+                        Bakhit Business Centre, Office No: M-88<br>
+                        Arzoo Building, Near Al Tawar Centre<br>
+                        Al Qusais, Dubai – UAE
                     </p>
                     <p>By appointment only</p>
                 </div>
@@ -162,14 +195,10 @@
             <p style="max-width: 600px; margin: 1rem auto 2rem;">Stay updated with our latest work, photography tips,
                 and special offers</p>
             <div class="social-links" style="justify-content: center; margin-top: 2rem;">
-                <a href="#" class="social-link" aria-label="Instagram"
-                    style="width: 60px; height: 60px; font-size: 1.8rem;">📷</a>
-                <a href="#" class="social-link" aria-label="Facebook"
-                    style="width: 60px; height: 60px; font-size: 1.8rem;">👥</a>
-                <a href="#" class="social-link" aria-label="Twitter"
-                    style="width: 60px; height: 60px; font-size: 1.8rem;">🐦</a>
-                <a href="#" class="social-link" aria-label="Pinterest"
-                    style="width: 60px; height: 60px; font-size: 1.8rem;">📌</a>
+                <a href="https://www.instagram.com/reelandroll.photography/" class="social-link" aria-label="Instagram" style="width: 60px; height: 60px; font-size: 1.8rem;" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-link" aria-label="Facebook" style="width: 60px; height: 60px; font-size: 1.8rem;"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="social-link" aria-label="YouTube" style="width: 60px; height: 60px; font-size: 1.8rem;"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="social-link" aria-label="Twitter / X" style="width: 60px; height: 60px; font-size: 1.8rem;"><i class="fa-brands fa-x-twitter"></i></a>
             </div>
         </div>
     </section>
@@ -190,9 +219,9 @@
                 </div>
 
                 <div class="service-card reveal" style="margin-bottom: 1.5rem;">
-                    <h3 style="color: var(--color-yellow);">What is your pricing?</h3>
-                    <p>Our pricing varies based on the type of photography, duration, and specific requirements. Contact
-                        us for a custom quote tailored to your needs.</p>
+                    <h3 style="color: var(--color-yellow);">How do I get started?</h3>
+                    <p>Simply reach out via the contact form, WhatsApp, or email. We'll schedule a discovery call to
+                        discuss your vision, goals, and how we can best serve you.</p>
                 </div>
 
                 <div class="service-card reveal" style="margin-bottom: 1.5rem;">
@@ -217,12 +246,12 @@
                 <div class="footer-section">
                     <h3>Reel & Roll</h3>
                     <p>Capturing life's most precious moments with passion, creativity, and professional excellence
-                        since 2010.</p>
+                        since 2024.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
-                        <a href="#" class="social-link" aria-label="Facebook">👥</a>
-                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
-                        <a href="#" class="social-link" aria-label="Pinterest">📌</a>
+                        <a href="https://www.instagram.com/reelandroll.photography/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
 
@@ -241,9 +270,10 @@
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li>📧 <a href="mailto:info@reelandroll.com">info@reelandroll.com</a></li>
-                        <li>📱 <a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-                        <li>📍 123 Photography Lane<br>Creative City, CC 12345</li>
+                        <li>📧 <a href="mailto:reelrollphotography26@gmail.com">reelrollphotography26@gmail.com</a></li>
+                        <li>📱 <a href="tel:+971545465757">+971 545465757</a></li>
+                        <li>📍 Bakhit Business Centre, Office No: M-88<br>Arzoo Building, Near Al Tawar Centre<br>Al
+                            Qusais, Dubai – UAE</li>
                     </ul>
                 </div>
             </div>
@@ -252,17 +282,61 @@
                 <p>&copy; 2026 <a href="index.html">Reel and Roll Photography</a>. All rights reserved.</p>
             </div>
         </div>
-    </footer>  
+    </footer>
 
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/971545465757" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><img src="assets/whatsappIcon-mhd.svg" alt="WhatsApp"></a>
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/971545465757" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><img src="assets/whatsappIcon-mhd.svg" alt="WhatsApp"></a>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/971545465757" class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"><img src="assets/whatsappIcon-mhd.svg" alt="WhatsApp"></a>
 
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+
+    <!-- Contact form handler -->
+    <script>
+        (function () {
+            const form = document.getElementById('contactForm');
+            const btn = form.querySelector('.btn-submit');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const btnSpan = btn.querySelector('span');
+                btnSpan.textContent = 'Sending...';
+                btn.disabled = true;
+
+                const data = new FormData(form);
+
+                fetch('mailer.php', { method: 'POST', body: data })
+                    .then(r => r.json())
+                    .then(res => {
+                        showMsg(res.message, res.success ? 'success' : 'error');
+                        if (res.success) form.reset();
+                    })
+                    .catch(() => showMsg('Something went wrong. Please email us directly at reelrollphotography26@gmail.com', 'error'))
+                    .finally(() => {
+                        btnSpan.textContent = 'Send Message';
+                        btn.disabled = false;
+                    });
+            });
+
+            function showMsg(text, type) {
+                let el = document.getElementById('formMsg');
+                if (!el) {
+                    el = document.createElement('div');
+                    el.id = 'formMsg';
+                    el.style.cssText = 'margin-top:1rem;padding:1rem 1.5rem;border-radius:8px;font-weight:500;';
+                    btn.insertAdjacentElement('afterend', el);
+                }
+                el.textContent = text;
+                el.style.background = type === 'success' ? 'rgba(72,199,142,0.12)' : 'rgba(255,77,0,0.12)';
+                el.style.color = type === 'success' ? '#48c78e' : '#FF4D00';
+                el.style.border = '1px solid ' + (type === 'success' ? 'rgba(72,199,142,0.3)' : 'rgba(255,77,0,0.3)');
+                el.style.display = 'block';
+                setTimeout(() => { el.style.display = 'none'; }, 7000);
+            }
+        })();
+    </script>
 </body>
 
 </html>

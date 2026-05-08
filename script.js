@@ -4,25 +4,69 @@
 // ===================================
 
 // ===================================
-// MOBILE MENU TOGGLE
+// MOBILE MENU
 // ===================================
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
+(function () {
+  // Build mobile overlay from desktop nav links
+  const leftLinks = document.querySelectorAll('.nav-links-left > li > a');
+  const rightLinks = document.querySelectorAll('.nav-links-right > li > a:not(.btn-nav-cta)');
+  const ctaLink = document.querySelector('.nav-links-right .btn-nav-cta');
 
-if (menuToggle && navLinks) {
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.classList.toggle('active');
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'mobile-nav-overlay';
+  overlay.innerHTML = `
+    <button class="mobile-nav-close" aria-label="Close menu">&#x2715;</button>
+    <ul id="mobileNavList"></ul>
+  `;
+  document.body.appendChild(overlay);
+
+  const mobileList = overlay.querySelector('#mobileNavList');
+
+  // Add all nav links (left + right, except CTA)
+  [...leftLinks, ...rightLinks].forEach(link => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = link.href;
+    a.textContent = link.textContent;
+    if (link.classList.contains('active')) a.classList.add('active');
+    li.appendChild(a);
+    mobileList.appendChild(li);
   });
 
-  // Close menu when clicking on a link
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-      menuToggle.classList.remove('active');
-    });
-  });
-}
+  // Add CTA separately
+  if (ctaLink) {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = ctaLink.href;
+    a.textContent = ctaLink.textContent.trim();
+    a.className = 'mobile-cta';
+    li.appendChild(a);
+    mobileList.appendChild(li);
+  }
+
+  const menuToggle = document.getElementById('menuToggle');
+  const closeBtn = overlay.querySelector('.mobile-nav-close');
+
+  function openMenu() {
+    overlay.style.display = 'flex';
+    requestAnimationFrame(() => overlay.classList.add('active'));
+    menuToggle.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    overlay.classList.remove('active');
+    menuToggle.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => { if (!overlay.classList.contains('active')) overlay.style.display = 'none'; }, 300);
+  }
+
+  if (menuToggle) menuToggle.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeMenu(); });
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+})();
 
 // ===================================
 // NAVBAR SCROLL EFFECT
@@ -41,7 +85,7 @@ window.addEventListener('scroll', () => {
 // ACTIVE PAGE HIGHLIGHTING
 // ===================================
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('.nav-links a').forEach(link => {
+document.querySelectorAll('.nav-links-left a, .nav-links-right a, .mobile-nav-overlay a').forEach(link => {
   const href = link.getAttribute('href');
   if (href === currentPage || (currentPage === '' && href === 'index.html')) {
     link.classList.add('active');
@@ -93,7 +137,8 @@ document.querySelectorAll('.reveal').forEach(element => {
 const filterBtns = document.querySelectorAll('.filter-btn');
 const galleryItems = document.querySelectorAll('.gallery-item');
 
-if (filterBtns.length > 0) {
+// Only run static filtering if not on the main gallery page which uses gallery-api.js
+if (filterBtns.length > 0 && !document.getElementById('galleryGrid')) {
   filterBtns.forEach(btn => {
     btn.addEventListener('click', function () {
       // Remove active class from all buttons

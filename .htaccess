@@ -1,0 +1,90 @@
+DirectoryIndex index.php index.html
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Force HTTPS in production (uncomment when deploying)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # --- Redirect .html pages to .php equivalents ---
+    RewriteCond %{THE_REQUEST} \s/([^?]*?)\.html[\s?] [NC]
+    RewriteRule ^ /%1.php [R=301,L]
+
+    # --- Never rewrite real files or directories ---
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # --- Skip static asset folders (but NOT admin — handled below) ---
+    RewriteRule ^(assets|uploads|database|includes)/ - [L]
+
+    # --- API Routes (pass as-is, PHP handled by server) ---
+    RewriteRule ^api/ - [L]
+
+    # --- Clean URLs: /about -> /about.php ---
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^([^/.]+)/?$ $1.php [L,QSA]
+
+    # --- Fallback: /about -> /about.html (for old HTML pages) ---
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^([^/.]+)/?$ $1.html [L,QSA]
+
+    # --- Clean URLs inside /admin: /admin/dashboard -> /admin/dashboard.html ---
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^(admin/[^/.]+)/?$ $1.php [L,QSA]
+
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(admin/[^/.]+)/?$ $1.html [L,QSA]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "no-referrer-when-downgrade"
+
+    # CORS Headers for API
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+</IfModule>
+
+# Protect sensitive files
+<FilesMatch "\.(env|sql|md|gitignore|dockerignore)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# PHP settings
+<IfModule mod_php.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+</IfModule>
+
+# Browser Caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+
+<Files .env>
+Order allow,deny
+Deny from all
+</Files>

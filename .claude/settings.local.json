@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:glowmedia.ae)",
+      "Bash(grep -rn \"hello@reelandroll\\\\|your@\\\\|info@\\\\|placeholder.*email\" c:/Myprojects/ReelandRoll/*.html c:/Myprojects/ReelandRoll/admin/*.html)",
+      "Bash(sed -i \"s/content: ' ▾';/content: '' !important;/\" \"c:/Myprojects/ReelandRoll/styles.css\")",
+      "Bash(sed -i \"/has-dropdown > a::after/{n;n;s/font-size: 0.7em;/height: 0 !important;/;n;s/opacity: 0.7;/opacity: 0 !important;/}\" \"c:/Myprojects/ReelandRoll/styles.css\")",
+      "Bash(sed -i \"s/querySelectorAll\\('.nav-links-left a'\\)/querySelectorAll\\('.nav-links-left > li > a'\\)/\" \"c:/Myprojects/ReelandRoll/script.js\")",
+      "Bash(sed -i \"s/querySelectorAll\\('.nav-links-right a:not\\(.btn-nav-cta\\)'\\)/querySelectorAll\\('.nav-links-right > li > a:not\\(.btn-nav-cta\\)'\\)/\" \"c:/Myprojects/ReelandRoll/script.js\")"
+    ]
+  }
+}
